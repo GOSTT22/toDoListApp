@@ -3,6 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers } from './store/hero.reducers';
+import { CreateHeroEffect } from './store/hero.effect';
+import { HerosService } from './store/heros.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -12,9 +19,14 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([]),
+    StoreModule.forFeature('hero', reducers),
+    EffectsModule.forFeature([CreateHeroEffect])
   ],
-  providers: [],
+  providers: [HerosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

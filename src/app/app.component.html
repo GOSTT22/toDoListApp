@@ -1,1 +1,21 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="types$ | async as types">
+    <select (change)="selectedValue($event.target.value)">
+        <option *ngFor="let type of types" [value]="type">
+            {{type}}
+        </option>
+    </select>
+</ng-container>
+
+<hr>
+
+<ng-container *ngIf="heros$ | async as heros">
+    <div *ngFor="let hero of heros">
+        {{hero.id}} | {{hero.name}} | {{hero.localized_name}} | {{hero.type}} <br>
+    </div>
+</ng-container>
+
+<hr>
+
+<ng-container *ngIf="error$ | async as error">
+    {{error}}
+</ng-container>
