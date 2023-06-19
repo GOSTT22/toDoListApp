@@ -1,0 +1,12 @@
+<router-outlet></router-outlet>
+
+<ng-container *ngIf="allCars$ | async as allCars">
+    <button (click)="goNew()">Add new Car</button>
+    <ng-container *ngFor="let car of allCars">
+        <div>
+            {{car.id}} {{car.name}} {{car.number}} {{car.mileage}}
+            <button (click)="editCar(car.id)">Edit</button>
+            <button (click)="deleteCar(car.id)">Delete</button>
+        </div>
+    </ng-container>
+</ng-container>
