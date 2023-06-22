@@ -677,6 +677,48 @@
       "name": "Ivan",
       "localized_name": "Ivan Kats",
       "type": "Wizard"
+    },
+    {
+      "id": 155,
+      "name": "Albert",
+      "localized_name": "Kovtun",
+      "type": "Santehnik"
+    },
+    {
+      "id": 156,
+      "name": "Albert",
+      "localized_name": "Kovtun",
+      "type": "Wizard"
+    },
+    {
+      "id": 201,
+      "name": "serik222",
+      "localized_name": "Vanya",
+      "type": "Wizard"
+    },
+    {
+      "id": 202,
+      "name": "Sviat",
+      "localized_name": "Vanya",
+      "type": "Wizard"
+    },
+    {
+      "id": "253",
+      "name": "Андрій",
+      "localized_name": "Vanya",
+      "type": "Wizard"
+    },
+    {
+      "id": "204",
+      "name": "Maks",
+      "localized_name": "Kiril",
+      "type": "Wizard"
+    },
+    {
+      "id": "207",
+      "name": "anastaisha.live555555",
+      "localized_name": "Kiril",
+      "type": "Wizard"
     }
   ]
 }

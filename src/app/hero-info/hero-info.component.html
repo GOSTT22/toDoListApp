@@ -1,0 +1,4 @@
+<p *ngIf="hero">{{hero.id}} | {{hero.name}} | {{hero.localized_name}} | {{hero.type}}
+    <button (click)="deleteHero(hero.id)">delete</button>
+    <button (click)="editHero(hero)">edit</button>
+</p>

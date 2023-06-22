@@ -8,9 +8,15 @@
 
 <hr>
 
+<router-outlet></router-outlet>
+
+<button (click)="createHero()">Create Hero</button>
+
 <ng-container *ngIf="heros$ | async as heros">
     <div *ngFor="let hero of heros">
-        {{hero.id}} | {{hero.name}} | {{hero.localized_name}} | {{hero.type}} <br>
+        <!-- {{hero.id}} | {{hero.name}} | {{hero.localized_name}} | {{hero.type}} <br> -->
+        <app-hero-info [hero]="hero"></app-hero-info>
+
     </div>
 </ng-container>
 

@@ -11,15 +11,21 @@ import { reducers } from './store/hero.reducers';
 import { CreateHeroEffect } from './store/hero.effect';
 import { HerosService } from './store/heros.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HeroInfoComponent } from './hero-info/hero-info.component';
+import { AddEditHeroComponent } from './add-edit-hero/add-edit-hero.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeroInfoComponent,
+    AddEditHeroComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),

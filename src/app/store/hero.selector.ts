@@ -21,3 +21,8 @@ export const ErrorSelector = createSelector(
     heroFeatureSelector,
     (heroState: HeroStateInterface) => heroState.error
 )
+
+export const selectSelectedHeroSelector = createSelector(
+    heroFeatureSelector,
+    (heroState: HeroStateInterface) => heroState.selectedHero
+)

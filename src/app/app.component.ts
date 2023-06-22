@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getAllHerosAction, getTypesOfHeros } from './store/hero.actions';
+import { createHeroAction, getAllHerosAction, getTypesOfHeros, setSelectedHeroAction } from './store/hero.actions';
 import { ErrorSelector, allHerosSelector, allTypesSelector } from './store/hero.selector';
-import { filter, map, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { BehaviorSubject, combineLatest } from 'rxjs';
+import { HeroInterface } from './store/hero.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,13 @@ import { BehaviorSubject, combineLatest } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+
+  hero: HeroInterface = {
+    id: 158,
+    name: "Oleh",
+    localized_name: "Kovtun",
+    type: "Wizard"
+  }
 
   selectedType$: BehaviorSubject<string> = new BehaviorSubject('');
 
@@ -30,7 +39,7 @@ export class AppComponent implements OnInit {
   );
   error$ = this.store.select(ErrorSelector);
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.store.dispatch(getAllHerosAction());
@@ -39,6 +48,17 @@ export class AppComponent implements OnInit {
 
   selectedValue(type: string): void {
     this.selectedType$.next(type);
+  }
+
+  createHero(): void {
+    const initialHero: HeroInterface = {
+      id: 0,
+      name: "",
+      localized_name: "",
+      type: ""
+    };
+    this.store.dispatch(setSelectedHeroAction({ hero: initialHero }));
+    this.router.navigate(['add-edit-hero']);
   }
 
 }
