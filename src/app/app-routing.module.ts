@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddEditHeroComponent } from './add-edit-hero/add-edit-hero.component';
+import { AddEditClientComponent } from './add-edit-client/add-edit-client.component';
 
 
 const routes: Routes = [
   {
-    path: 'add-edit-hero',
-    component: AddEditHeroComponent
+    path: 'add-edit-client',
+    component: AddEditClientComponent
   }
 ];
 

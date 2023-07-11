@@ -1,0 +1,25 @@
+<p>OPERATION WITH CLIENT</p>
+
+<ng-container *ngIf="client$ | async">
+    <form class="example-form" [formGroup]="form" (ngSubmit)="submit()" >
+        <mat-form-field class="example-full-width">
+            <mat-label for="id">ID:</mat-label>
+            <input type="text" id="id" [formControl]="idControl" matInput>
+        </mat-form-field>
+    
+        
+        <mat-form-field class="example-full-width">
+            <mat-label for="task_name">NAME:</mat-label>
+            <input type="text" id="task_name" [formControl]="task_nameControl" matInput>
+        </mat-form-field>
+    
+        
+        <mat-form-field class="example-full-width">
+            <mat-label for="status">STATUS:</mat-label>
+            <input type="text" id="status" [formControl]="statusControl" matInput>
+        </mat-form-field>
+        <button  mat-stroked-button color="accent" type="submit">SAVE</button>
+      </form>
+</ng-container>
+
+

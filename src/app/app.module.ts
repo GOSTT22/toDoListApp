@@ -7,21 +7,38 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from './store/hero.reducers';
-import { CreateHeroEffect } from './store/hero.effect';
-import { HerosService } from './store/heros.service';
+import { reducers } from './store/client.reducers';
+import { CreateClientEffect } from './store/client.effect';
+import { ClientsService } from './store/clients.service';
+import { ClientInfoComponent } from './client-info/client-info.component';
+import { AddEditClientComponent } from './add-edit-client/add-edit-client.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HeroInfoComponent } from './hero-info/hero-info.component';
-import { AddEditHeroComponent } from './add-edit-hero/add-edit-hero.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroInfoComponent,
-    AddEditHeroComponent
+    ClientInfoComponent,
+    AddEditClientComponent
   ],
   imports: [
+    MatExpansionModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -29,10 +46,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
-    StoreModule.forFeature('hero', reducers),
-    EffectsModule.forFeature([CreateHeroEffect])
+    StoreModule.forFeature('client', reducers),
+    EffectsModule.forFeature([CreateClientEffect]),
+    BrowserAnimationsModule
   ],
-  providers: [HerosService],
+  providers: [ClientsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

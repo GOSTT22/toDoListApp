@@ -1,27 +1,39 @@
-<ng-container *ngIf="types$ | async as types">
-    <select (change)="selectedValue($event.target.value)">
-        <option *ngFor="let type of types" [value]="type">
-            {{type}}
-        </option>
-    </select>
-</ng-container>
+<br><br><br>
+<div class="container">
+<div class="name_app">
+    <h1>TODO List Demo App</h1>
+    <h4>Do it now.</h4>
+</div>
 
-<hr>
+<br><br>
+<div class="main">
 
+    <ng-container *ngIf="types$ | async as types">
+     <select (change)="selectedValue($event.target.value)">
+         <option *ngFor="let type of types" [value]="type">
+             {{type}}
+         </option>
+        </select>
+    </ng-container>
+
+    <button mat-stroked-button color="primary" (click)="createClient()">Add Task</button>
+</div>
 <router-outlet></router-outlet>
 
-<button (click)="createHero()">Create Hero</button>
+<br><br><br>
 
-<ng-container *ngIf="heros$ | async as heros">
-    <div *ngFor="let hero of heros">
-        <!-- {{hero.id}} | {{hero.name}} | {{hero.localized_name}} | {{hero.type}} <br> -->
-        <app-hero-info [hero]="hero"></app-hero-info>
+<ng-container>
+    <!-- <div *ngFor="let client of clients"> -->
 
-    </div>
+        <app-client-info [clients]="clients$"></app-client-info>
+
+    <!-- </div> -->
 </ng-container>
 
-<hr>
+
 
 <ng-container *ngIf="error$ | async as error">
     {{error}}
 </ng-container>
+
+</div>

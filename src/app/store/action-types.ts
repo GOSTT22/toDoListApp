@@ -1,27 +1,26 @@
 export enum ActionTypes {
-    GET_ALL_HEROS = '[HEROS] get all heros',
-    GET_ALL_HEROS_SUCCESS = '[HEROS] get all heros success',
-    GET_ALL_HEROS_FAILURE = '[HEROS] get all heros failure',
+    GET_ALL_CLIENTS = '[CLIENTS] get all clients',
+    GET_ALL_CLIENTS_SUCCESS = '[CLIENTS] get all clients success',
+    GET_ALL_CLIENTS_FAILURE = '[CLIENTS] get all clients failure',
 
-    GET_TYPES_OF_HEROS = '[HEROS] get all types of heros',
-    // GET_TYPES_OF_HEROS_FAILURE = '[HEROS] get all types of heros failure'
+    GET_TYPES_OF_CLIETNS = '[CLIENTS] get all types of clients',
 
-    CREATE_HERO = '[HEROS] create hero',
-    CREATE_HERO_SUCCESS = '[HEROES] create hero success',
-    CREATE_HERO_FAILURE = '[HEROES] create hero failure',
+    CREATE_CLIENT = '[CLIENTS] create client',
+    CREATE_CLIENT_SUCCESS = '[CLIENTS] create client success',
+    CREATE_CLIENT_FAILURE = '[CLIENTS] create client failure',
 
-    GET_HERO_BY_ID = '[HEROS] get hero by id',
-    GET_HERO_BY_ID_SUCCESS = '[HEROS] get hero by id success',
-    GET_HERO_BY_ID_FAILURE = '[HEROS] get hero by id failure',
+    GET_CLIENT_BY_ID = '[CLIENTS] get client by id',
+    GET_CLIENT_BY_ID_SUCCESS = '[CLIENTS] get client by id success',
+    GET_CLIENT_BY_ID_FAILURE = '[CLIENTS] get client by id failure',
 
-    DELETE_HERO = '[HEROS] delete hero',
-    DELETE_HERO_SUCCESS = '[HEROS] delete hero success',
-    DELETE_HERO_FAILURE = '[HEROS] delete hero failure',
+    DELETE_CLIENT = '[CLIENTS] client hero',
+    DELETE_CLIENT_SUCCESS = '[CLIENTS] delete client success',
+    DELETE_CLIENT_FAILURE = '[CLIENTS] delete client failure',
 
-    SET_SELECTED_HERO = '[HEROS] set selected hero',
-    CLEAR_SELECTED_HERO = '[HEROS] clear selected hero',
+    SET_SELECTED_CLIENT = '[CLIENTS] set selected client',
+    CLEAR_SELECTED_CLIENT = '[CLIENTS] clear selected client',
 
-    UPDATE_HERO = '[HEROS] update hero',
-    UPDATE_HERO_SUCCESS = '[HEROS] update hero success',
-    UPDATE_HERO_FAILURE = '[HEROS] update hero failure'
+    UPDATE_CLIENT = '[CLIENTS] update client',
+    UPDATE_CLIENT_SUCCESS = '[CLIENTS] update client success',
+    UPDATE_CLIENT_FAILURE = '[CLIENTS] update client failure'
 }

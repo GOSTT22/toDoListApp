@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { createHeroAction, getAllHerosAction, getTypesOfHeros, setSelectedHeroAction } from './store/hero.actions';
-import { ErrorSelector, allHerosSelector, allTypesSelector } from './store/hero.selector';
+import { createClientAction, getAllClientsAction, getTypesOfClients, setSelectedClientAction } from './store/client.actions';
+import { ErrorSelector, allClientsSelector, allTypesSelector } from './store/client.selector';
 import { map, tap } from 'rxjs/operators';
 import { BehaviorSubject, combineLatest } from 'rxjs';
-import { HeroInterface } from './store/hero.interface';
+import { ClientInterface } from './store/client.interface';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +15,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  colorControl = new FormControl('primary' as ThemePalette);
   title = 'app';
 
-  hero: HeroInterface = {
-    id: 158,
-    name: "Oleh",
-    localized_name: "Kovtun",
-    type: "Wizard"
+  client: ClientInterface = {
+    id: 11,
+    task_name: "Buldog",
+    status: "Todo"
   }
 
   selectedType$: BehaviorSubject<string> = new BehaviorSubject('');
@@ -31,34 +33,33 @@ export class AppComponent implements OnInit {
       }
     })
   );
-  heros$ = combineLatest([this.selectedType$, this.store.select(allHerosSelector)]).pipe(
-    // filter(heros => !!heros),
-    map(([type, heros]) => {
-      return heros? heros.filter(hero => hero.type === type) : []
-    })
+  clients$ = combineLatest([this.selectedType$, this.store.select(allClientsSelector)]).pipe(
+    map(([type, clients]) => {
+      return clients? clients.filter(client => client.status === type) : []
+    }), 
+    tap(r => console.log(r))
   );
   error$ = this.store.select(ErrorSelector);
 
   constructor(private store: Store, private router: Router) { }
 
   ngOnInit(): void {
-    this.store.dispatch(getAllHerosAction());
-    setTimeout(() => { this.store.dispatch(getTypesOfHeros()); }, 100)
+    this.store.dispatch(getAllClientsAction());
+    setTimeout(() => { this.store.dispatch(getTypesOfClients()); }, 100)
   }
 
   selectedValue(type: string): void {
     this.selectedType$.next(type);
   }
 
-  createHero(): void {
-    const initialHero: HeroInterface = {
+  createClient(): void {
+    const initialClient: ClientInterface = {
       id: 0,
-      name: "",
-      localized_name: "",
-      type: ""
+      task_name: "",
+      status: ""
     };
-    this.store.dispatch(setSelectedHeroAction({ hero: initialHero }));
-    this.router.navigate(['add-edit-hero']);
+    this.store.dispatch(setSelectedClientAction({ client: initialClient }));
+    this.router.navigate(['add-edit-client']);
   }
 
 }

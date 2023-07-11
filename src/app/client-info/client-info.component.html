@@ -1,0 +1,63 @@
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> # </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+
+  
+  <ng-container matColumnDef="task_name">
+    
+    <th mat-header-cell *matHeaderCellDef> Task Name </th>
+    <td mat-cell *matCellDef="let element">
+        <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <div class="text1">
+            {{element.task_name}}
+          </div> 
+        </mat-expansion-panel-header>
+        <p class="text2">I'm visible because I am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>  </td>
+    
+    
+  </ng-container>
+  
+  <!-- Status Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"  class="status" [ngClass]="{'status--todo': element.status === 'Todo', 'status--in-progress': element.status === 'in Progress', 'status--complete': element.status === 'Complete'}"> {{element.status}} </td>
+  </ng-container>
+
+  <!-- Edit Column -->
+  <ng-container matColumnDef="option_edit">
+    <th mat-header-cell *matHeaderCellDef> Edit </th>
+    <td mat-cell *matCellDef="let element"> 
+    <button  mat-icon-button color="primary" (click)="editClient(element)" class="btn">
+        <mat-icon>edit</mat-icon>
+    </button>   
+    </td>
+  </ng-container>
+
+  <!-- Delete Column -->
+  <ng-container matColumnDef="option_delete">
+    <th mat-header-cell *matHeaderCellDef> Delete </th>
+    <td mat-cell *matCellDef="let element"> 
+      <button mat-icon-button color="disabled" (click)="deleteClient(element.id)" class="btn">
+        <mat-icon>delete</mat-icon>
+    </button> 
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
+
