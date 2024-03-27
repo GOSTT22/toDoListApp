@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   title = 'app';
 
   client: ClientInterface = {
-    id: 11,
+    _id: "11",
     task_name: "Buldog",
     status: "Todo"
   }
@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
 
   createClient(): void {
     const initialClient: ClientInterface = {
-      id: 0,
+      _id: "0",
       task_name: "",
       status: ""
     };

@@ -38,7 +38,7 @@ export const createClientFailureAction = createAction(
 
 export const getClientByIdAction = createAction(
     ActionTypes.GET_CLIENT_BY_ID,
-    props<{ id: number }>()
+    props<{ _id: string }>()
 )
 
 export const getClientByIdSuccessAction = createAction(
@@ -53,12 +53,12 @@ export const getClientByIdFailureAction = createAction(
 
 export const deleteClientAction = createAction(
     ActionTypes.DELETE_CLIENT,
-    props<{ id: number }>()
+    props<{ _id: string }>()
 )
 
 export const deleteClientSuccessAction = createAction(
     ActionTypes.DELETE_CLIENT_SUCCESS,
-    props<{ id: number }>()
+    props<{ _id: string }>()
 )
 
 export const deleteClientFailureAction = createAction(

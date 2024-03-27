@@ -1,5 +1,5 @@
 export interface ClientInterface {
-    "id": number;
+    "_id": string;
     "task_name": string;
     // "description": string;
     "status": string;

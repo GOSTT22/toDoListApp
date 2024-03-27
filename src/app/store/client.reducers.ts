@@ -7,7 +7,7 @@ const initialState: ClientStateInterface = {
     types: null,
     error: null,
     client: null,
-    selectedClient: {id: 0, task_name: "", status: ""}
+    selectedClient: {_id: "0", task_name: "", status: ""}
 }
 
 const clientReducer = createReducer(
@@ -51,7 +51,7 @@ const clientReducer = createReducer(
     on(
         deleteClientSuccessAction,
         (state, action): ClientStateInterface => {
-            const newClients = state.allClients.filter(client => client.id !== action.id);
+            const newClients = state.allClients.filter(client => client._id !== action._id);
             return {...state, allClients: newClients}
         }
     ),
@@ -78,7 +78,7 @@ const clientReducer = createReducer(
         (state, action): ClientStateInterface => {
             const newClient = action.client;
             const newClients = state.allClients.map(client => {
-                if (client.id === newClient.id) {
+                if (client._id === newClient._id) {
                     return newClient
                 }
                 return client

@@ -41,10 +41,10 @@ export class CreateClientEffect {
     deleteClient$ = createEffect(() =>
         this.actions$.pipe(
             ofType(deleteClientAction),
-            switchMap(({ id }) => {
-                return this.clientsService.deleteClient(id).pipe(
+            switchMap(({ _id }) => {
+                return this.clientsService.deleteClient(_id).pipe(
                     map(() => {
-                        return deleteClientSuccessAction({ id })
+                        return deleteClientSuccessAction({ _id })
                     })
                 )
             }),

@@ -24,8 +24,8 @@ export class ClientsService {
         );
     }
 
-    deleteClient(id: number): Observable<any> {
-        return this.http.delete<ClientInterface>(this.url + '/' + id).pipe(
+    deleteClient(_id: string): Observable<any> {
+        return this.http.delete<ClientInterface>(this.url + '/' + _id).pipe(
             tap(_ => {
                 console.log('Client was deleted');
             }),
@@ -34,8 +34,9 @@ export class ClientsService {
     }
 
     updateClient(ClientForUpdating: ClientInterface): Observable<any> {
-        return this.http.put(this.url + '/' + ClientForUpdating.id, ClientForUpdating).pipe(
-          tap(_ => console.log(`updated client with id=${ClientForUpdating.id}`)),
+        console.log(ClientForUpdating);
+        return this.http.put(this.url + '/' + ClientForUpdating._id, ClientForUpdating).pipe(
+          tap(_ => console.log(`updated client with _id=${ClientForUpdating._id}`)),
           catchError((error) => throwError(`Server do not response. Error : ${error.toString()}`))
         );
     }

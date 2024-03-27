@@ -48,8 +48,8 @@ export class ClientInfoComponent implements OnInit, AfterViewInit {
     }
   }
 
-  deleteClient(id: number): void {
-    this.store.dispatch(deleteClientAction({ id }));
+  deleteClient(_id: string): void {
+    this.store.dispatch(deleteClientAction({ _id }));
   }
 
   editClient(client: ClientInterface) {
