@@ -2,9 +2,9 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!-- ID Column -->
-  <ng-container matColumnDef="id">
+  <ng-container matColumnDef="_id">
     <th mat-header-cell *matHeaderCellDef> # </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    <td mat-cell *matCellDef="let element"> {{element._id}} </td>
   </ng-container>
 
   <!-- Name Column -->
@@ -48,9 +48,9 @@
   <ng-container matColumnDef="option_delete">
     <th mat-header-cell *matHeaderCellDef> Delete </th>
     <td mat-cell *matCellDef="let element"> 
-      <button mat-icon-button color="disabled" (click)="deleteClient(element.id)" class="btn">
+      <button mat-icon-button color="disabled" (click)="deleteClient(element._id)" class="btn">
         <mat-icon>delete</mat-icon>
-    </button> 
+    </button>
     </td>
   </ng-container>
 
