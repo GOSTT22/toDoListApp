@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class AddEditClientComponent implements OnInit {
   
   _id: string;
+  isInputDisabled = false;
 
   idControl = new FormControl('');
   task_nameControl = new FormControl('');
@@ -54,7 +55,7 @@ export class AddEditClientComponent implements OnInit {
     if (this.create) {
       this.store.dispatch(createClientAction({ client: this.form.value }))
     } else {
-      const newId = this.form.value._id;
+      const newId = this.idControl.value;
       let obj: ClientInterface = this.form.value;
       if (this._id !== newId) {
         obj._id = this._id;
