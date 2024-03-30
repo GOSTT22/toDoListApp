@@ -9,6 +9,7 @@ import { Observable, Subscription } from 'rxjs';
 export interface PeriodicElement {
   _id: string;
   task_name: string;
+  description: string;
   status: string;
 }
 
@@ -23,7 +24,7 @@ export interface PeriodicElement {
 
 export class ClientInfoComponent implements OnInit, AfterViewInit {
   @Input() clients: Observable<ClientInterface[]>;
-  displayedColumns: string[] = ['_id', 'task_name', 'status', 'option_edit', 'option_delete' ];
+  displayedColumns: string[] = ['_id', 'task_name', 'description', 'status', 'option_edit', 'option_delete' ];
   dataSource;
   subscription: Subscription;
 

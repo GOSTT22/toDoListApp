@@ -12,7 +12,11 @@
             <mat-label for="task_name">NAME:</mat-label>
             <input type="text" id="task_name" [formControl]="task_nameControl" matInput>
         </mat-form-field>
-    
+
+        <mat-form-field class="example-full-width">
+            <mat-label for="description">Description:</mat-label>
+            <input type="text" id="description" [formControl]="descriptionControl" matInput>
+        </mat-form-field>
         
         <mat-form-field class="example-full-width">
             <mat-label for="status">STATUS:</mat-label>

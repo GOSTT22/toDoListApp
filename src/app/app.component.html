@@ -17,6 +17,13 @@
     </ng-container>
 
     <button mat-stroked-button color="primary" (click)="createClient()">Add Task</button>
+
+    <!-- EXAMPLE -->
+    <mat-slider>
+        <input matSliderThumb>
+      </mat-slider>
+    <!-- EXAMPLE -->
+
 </div>
 <router-outlet></router-outlet>
 
@@ -35,5 +42,7 @@
 <ng-container *ngIf="error$ | async as error">
     {{error}}
 </ng-container>
+
+
 
 </div>

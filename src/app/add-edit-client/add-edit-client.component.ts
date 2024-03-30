@@ -19,6 +19,7 @@ export class AddEditClientComponent implements OnInit {
 
   idControl = new FormControl('');
   task_nameControl = new FormControl('');
+  descriptionControl = new FormControl('');
   statusControl = new FormControl('');
   form = new FormGroup({});
 
@@ -35,11 +36,13 @@ export class AddEditClientComponent implements OnInit {
         }
         this.idControl = new FormControl(this.client._id);
         this.task_nameControl = new FormControl(this.client.task_name);
+        this.descriptionControl = new FormControl(this.client.description);
         this.statusControl = new FormControl(this.client.status);
 
         this.form = new FormGroup({
           _id: this.idControl,
           task_name: this.task_nameControl,
+          description: this.descriptionControl,
           status: this.statusControl
         })
       }

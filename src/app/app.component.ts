@@ -8,19 +8,26 @@ import { ClientInterface } from './store/client.interface';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
+import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   colorControl = new FormControl('primary' as ThemePalette);
   title = 'app';
+  // color: ThemePalette = 'primary';
+  // mode: ProgressSpinnerMode = 'determinate';
+  // value = 50;
+
+  // Example
 
   client: ClientInterface = {
     _id: "11",
     task_name: "Buldog",
+    description: "basketball team",
     status: "Todo"
   }
 
@@ -35,8 +42,15 @@ export class AppComponent implements OnInit {
   );
   clients$ = combineLatest([this.selectedType$, this.store.select(allClientsSelector)]).pipe(
     map(([type, clients]) => {
-      return clients? clients.filter(client => client.status === type) : []
-    }), 
+      return clients? clients.filter(client => client.status === type).map((client, i) => {
+        // client.i = i++;
+        return client;
+      }) : []
+    }),
+    // map((client: any, i) => {
+    //   client.i = ++i;
+    //   return client;
+    // }),
     tap(r => console.log(r))
   );
   error$ = this.store.select(ErrorSelector);
@@ -56,6 +70,7 @@ export class AppComponent implements OnInit {
     const initialClient: ClientInterface = {
       _id: "0",
       task_name: "",
+      description: "",
       status: ""
     };
     this.store.dispatch(setSelectedClientAction({ client: initialClient }));

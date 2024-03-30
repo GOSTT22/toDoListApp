@@ -20,6 +20,7 @@ tr.mat-header-row {
 
 th.mat-header-cell, td.mat-cell{
     text-align: center;
+    padding-right: 40px;
 }
 
 .mat-mdc-form-field + .mat-mdc-form-field {
@@ -53,32 +54,32 @@ th.mat-header-cell, td.mat-cell{
     border-radius: 15%;
 }
 
-.mat-button.mat-disabled, .mat-icon-button.mat-disabled, .mat-stroked-button.mat-disabled {
-    color: #666666;
-    border: 0.5mm solid #666666;
+.mat-mini-fab {
+    color: red;
+    border: 0.5mm solid red;
+    background-color: white;
     border-radius: 15%;
 }
 
 .status {
-    border-radius: 5px;
-    outline: 1px solid white;
-    
+    border-radius: 15%;
 
     &--todo {
         // background: #16b8ce;
-        border: 0.5mm solid black;
+        // border: 0.5mm solid black;
         color: black;
     }
 
     &--in-progress {
-        background: orange;
-        color: black;
+        // border: 0.5mm solid orange;
+        color: orange;
+        // border: 0.5mm solid orange;
         
     }
 
     &--complete {
         // background: green;
         color: green;
-        border: 0.5mm solid green;
+        // border: 0.5mm solid green;
     }
 }
