@@ -42,15 +42,8 @@ export class AppComponent implements OnInit {
   );
   clients$ = combineLatest([this.selectedType$, this.store.select(allClientsSelector)]).pipe(
     map(([type, clients]) => {
-      return clients? clients.filter(client => client.status === type).map((client, i) => {
-        // client.i = i++;
-        return client;
-      }) : []
+      return clients? clients.filter(client => client.status === type) : []
     }),
-    // map((client: any, i) => {
-    //   client.i = ++i;
-    //   return client;
-    // }),
     tap(r => console.log(r))
   );
   error$ = this.store.select(ErrorSelector);

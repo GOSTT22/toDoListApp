@@ -7,7 +7,7 @@ const initialState: ClientStateInterface = {
     types: null,
     error: null,
     client: null,
-    selectedClient: {_id: "0", task_name: "", description: "", status: "", i: 0}
+    selectedClient: {_id: "0", task_name: "", description: "", status: "", i: 0, createdAt:""}
 }
 
 const clientReducer = createReducer(

@@ -10,6 +10,7 @@ export interface PeriodicElement {
   _id: string;
   task_name: string;
   description: string;
+  created: Date;
   status: string;
 }
 
@@ -24,11 +25,14 @@ export interface PeriodicElement {
 
 export class ClientInfoComponent implements OnInit, AfterViewInit {
   @Input() clients: Observable<ClientInterface[]>;
-  displayedColumns: string[] = ['_id', 'task_name', 'description', 'status', 'option_edit', 'option_delete' ];
+  displayedColumns: string[] = ['_id', 'task_name', 'description', 'created', 'status', 'option_edit', 'option_delete' ];
   dataSource;
   subscription: Subscription;
+  temp: Date;
 
-  constructor(private store: Store, private router: Router) { }
+  constructor(private store: Store, private router: Router) {
+    this.temp = new Date();
+   }
 
   ngOnInit(): void {
     this.subscription = this.clients.subscribe(allClients =>{

@@ -4,4 +4,5 @@ export interface ClientInterface {
     "description": string;
     "status": string;
     "i"?: number;
+    "createdAt"?: string;
 }
