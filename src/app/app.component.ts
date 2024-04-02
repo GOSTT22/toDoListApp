@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { createClientAction, getAllClientsAction, getTypesOfClients, setSelectedClientAction } from './store/client.actions';
+import { clearSelectedClientAction, createClientAction, getAllClientsAction, getTypesOfClients, setSelectedClientAction } from './store/client.actions';
 import { ErrorSelector, allClientsSelector, allTypesSelector } from './store/client.selector';
 import { map, tap } from 'rxjs/operators';
 import { BehaviorSubject, combineLatest } from 'rxjs';
@@ -59,7 +59,9 @@ export class AppComponent implements OnInit {
     this.selectedType$.next(type);
   }
 
+  toggle: boolean;
   createClient(): void {
+    this.toggle = !this.toggle;
     const initialClient: ClientInterface = {
       _id: "0",
       task_name: "",
@@ -68,6 +70,10 @@ export class AppComponent implements OnInit {
     };
     this.store.dispatch(setSelectedClientAction({ client: initialClient }));
     this.router.navigate(['add-edit-client']);
+    if (!this.toggle) {
+      this.router.navigate(['']);
+      // this.store.dispatch(clearSelectedClientAction());
+    }
   }
 
 }

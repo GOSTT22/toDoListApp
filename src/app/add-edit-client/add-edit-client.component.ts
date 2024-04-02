@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { clearSelectedClientAction, createClientAction, updateClientAction } from '../store/client.actions';
+import { clearSelectedClientAction, createClientAction, setSelectedClientAction, updateClientAction } from '../store/client.actions';
 import { selectSelectedClientSelector } from '../store/client.selector';
 import { ClientInterface } from '../store/client.interface';
 import { tap } from 'rxjs/operators';
@@ -68,6 +68,19 @@ export class AddEditClientComponent implements OnInit {
     }
     this.store.dispatch(clearSelectedClientAction());
     this.router.navigate(['/']);
+  }
+
+  cancel(){
+    const initialClient: ClientInterface = {
+      _id: "0",
+      task_name: "",
+      description: "",
+      status: ""
+    };
+    this.store.dispatch(setSelectedClientAction({ client: initialClient }));
+
+    // this.router.navigate(['']);
+    // this.store.dispatch(clearSelectedClientAction());
   }
 
 }

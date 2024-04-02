@@ -7,7 +7,6 @@
 
 <br><br>
 <div class="main">
-
     <ng-container *ngIf="types$ | async as types">
      <select (change)="selectedValue($event.target.value)">
          <option *ngFor="let type of types" [value]="type">
