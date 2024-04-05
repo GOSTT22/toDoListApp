@@ -10,8 +10,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './store/client.reducers';
 import { CreateClientEffect } from './store/client.effect';
 import { ClientsService } from './store/clients.service';
-import { ClientInfoComponent } from './client-info/client-info.component';
-import { AddEditClientComponent } from './add-edit-client/add-edit-client.component';
+import { ClientInfoComponent } from './components/client-info/client-info.component';
+import { AddEditClientComponent } from './components/add-edit-client/add-edit-client.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -27,6 +27,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MainComponent } from './pages/main/main.component';
+import { AuthComponent } from './pages/auth/auth.component';
+import { P404Component } from './page/p404/p404.component';
 
 
 
@@ -34,7 +37,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
   declarations: [
     AppComponent,
     ClientInfoComponent,
-    AddEditClientComponent
+    AddEditClientComponent,
+    MainComponent,
+    AuthComponent,
+    P404Component
   ],
   imports: [
     MatCardModule, MatRadioModule, FormsModule, MatSliderModule, MatProgressSpinnerModule,

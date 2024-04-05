@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { clearSelectedClientAction, createClientAction, setSelectedClientAction, updateClientAction } from '../store/client.actions';
-import { selectSelectedClientSelector } from '../store/client.selector';
-import { ClientInterface } from '../store/client.interface';
+import { clearSelectedClientAction, createClientAction, setSelectedClientAction, updateClientAction } from '../../store/client.actions';
+import { selectSelectedClientSelector } from '../../store/client.selector';
+import { ClientInterface } from '../../store/client.interface';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -81,6 +81,23 @@ export class AddEditClientComponent implements OnInit {
 
     // this.router.navigate(['']);
     // this.store.dispatch(clearSelectedClientAction());
+  }
+  toggle: boolean;
+  closed(): void {
+    this.toggle = false;
+    this.router.navigate(['']);
+    // const initialClient: ClientInterface = {
+    //   _id: "0",
+    //   task_name: "",
+    //   description: "",
+    //   status: ""
+    // };
+    // this.store.dispatch(setSelectedClientAction({ client: initialClient }));
+    // this.router.navigate(['add-edit-client']);
+    // if (!this.toggle) {
+    //   this.router.navigate(['']);
+      // this.store.dispatch(clearSelectedClientAction());
+    // }
   }
 
 }

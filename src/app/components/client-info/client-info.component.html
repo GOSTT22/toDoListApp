@@ -29,9 +29,16 @@
   <ng-container matColumnDef="description" >
     <th mat-header-cell *matHeaderCellDef> Description </th>
     <td mat-cell *matCellDef="let element">
+      <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
           <div class="text1">
-            {{element.description}}
+            {{element.task_name}} 
           </div> 
+          </mat-expansion-panel-header>
+        <p class="text2">{{element.description}}</p>
+      </mat-expansion-panel>
+    </mat-accordion> 
   </td>
   </ng-container>
 

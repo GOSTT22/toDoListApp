@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { ClientInterface } from '../store/client.interface';
+import { ClientInterface } from '../../store/client.interface';
 import { Store } from '@ngrx/store';
-import { deleteClientAction, setSelectedClientAction } from '../store/client.actions';
+import { deleteClientAction, setSelectedClientAction } from '../../store/client.actions';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subscription } from 'rxjs';
