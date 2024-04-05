@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { clearSelectedClientAction, createClientAction, getAllClientsAction, getTypesOfClients, setSelectedClientAction } from '../../store/client.actions';
+import { clearSelectedClientAction, createClientAction, getAllClientsAction, getTypesOfClients, openTaskFormClientAction, setSelectedClientAction } from '../../store/client.actions';
 import { ErrorSelector, allClientsSelector, allTypesSelector } from '../../store/client.selector';
 import { map, tap } from 'rxjs/operators';
 import { BehaviorSubject, combineLatest } from 'rxjs';
@@ -61,6 +61,7 @@ export class MainComponent implements OnInit {
 
   toggle: boolean;
   createClient(): void {
+    this.store.dispatch(openTaskFormClientAction());
     this.toggle = !this.toggle;
     const initialClient: ClientInterface = {
       _id: "0",

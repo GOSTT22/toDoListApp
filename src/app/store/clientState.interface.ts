@@ -5,5 +5,6 @@ export interface ClientStateInterface {
     types: string[] | null,
     error: string | null,
     client: ClientInterface | null,
-    selectedClient: ClientInterface | null
+    selectedClient: ClientInterface | null,
+    isFormOpened: boolean
 }

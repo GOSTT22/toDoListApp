@@ -66,6 +66,10 @@ export const deleteClientFailureAction = createAction(
     props<{ errors: string }>()
 )
 
+export const openTaskFormClientAction = createAction(
+    ActionTypes.OPEN_TASK_FORM_CLIENT
+)
+
 export const setSelectedClientAction = createAction(
     ActionTypes.SET_SELECTED_CLIENT,
     props<{ client: ClientInterface }>()

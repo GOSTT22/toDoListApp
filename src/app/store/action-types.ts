@@ -17,6 +17,8 @@ export enum ActionTypes {
     DELETE_CLIENT_SUCCESS = '[CLIENTS] delete client success',
     DELETE_CLIENT_FAILURE = '[CLIENTS] delete client failure',
 
+    OPEN_TASK_FORM_CLIENT = '[CLIENTS] open task fprm',
+    
     SET_SELECTED_CLIENT = '[CLIENTS] set selected client',
     CLEAR_SELECTED_CLIENT = '[CLIENTS] clear selected client',
 
