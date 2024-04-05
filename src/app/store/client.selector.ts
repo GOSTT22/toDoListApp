@@ -22,6 +22,11 @@ export const ErrorSelector = createSelector(
     (clientState: ClientStateInterface) => clientState.error
 )
 
+export const isFormOpenedSelecor = createSelector(
+    clientFeatureSelector,
+    (clientState: ClientStateInterface) => clientState.isFormOpened
+)
+
 export const selectSelectedClientSelector = createSelector(
     clientFeatureSelector,
     (clientState: ClientStateInterface) => clientState.selectedClient

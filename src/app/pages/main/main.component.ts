@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component, Input, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
 import { clearSelectedClientAction, createClientAction, getAllClientsAction, getTypesOfClients, openTaskFormClientAction, setSelectedClientAction } from '../../store/client.actions';
-import { ErrorSelector, allClientsSelector, allTypesSelector } from '../../store/client.selector';
+import { ErrorSelector, allClientsSelector, allTypesSelector, isFormOpenedSelecor } from '../../store/client.selector';
 import { map, tap } from 'rxjs/operators';
-import { BehaviorSubject, combineLatest } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, combineLatest } from 'rxjs';
 import { ClientInterface } from '../../store/client.interface';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
@@ -17,7 +17,9 @@ import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/p
 })
 export class MainComponent implements OnInit {
   colorControl = new FormControl('primary' as ThemePalette);
+  @Input() clients: Observable<ClientInterface[]>;
   title = 'app';
+  subscription: Subscription;
   // color: ThemePalette = 'primary';
   // mode: ProgressSpinnerMode = 'determinate';
   // value = 50;
@@ -48,11 +50,20 @@ export class MainComponent implements OnInit {
   );
   error$ = this.store.select(ErrorSelector);
 
-  constructor(private store: Store, private router: Router) { }
+  isFormOpened$ = this.store.select(isFormOpenedSelecor);
+
+  constructor(private store: Store, private router: Router) { 
+    // this.isFormOpened$ = store.pipe(select(state => state.));
+  }
 
   ngOnInit(): void {
     this.store.dispatch(getAllClientsAction());
     setTimeout(() => { this.store.dispatch(getTypesOfClients()); }, 100)
+
+    this.subscription = this.clients.subscribe(isFormOpened =>{
+      console.log('Open', isFormOpened)
+    // this.dataSource = new MatTableDataSource(allClients);
+    })
   }
 
   selectedValue(type: string): void {
