@@ -30,6 +30,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MainComponent } from './pages/main/main.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { P404Component } from './page/p404/p404.component';
+import {  } from './page/p404/p404.component';
 
 
 

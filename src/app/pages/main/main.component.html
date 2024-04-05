@@ -16,24 +16,14 @@
     </ng-container>
 
     <button mat-stroked-button color="primary" (click)="createClient()">Add Task</button>
-
-    <!-- EXAMPLE -->
-    <!-- <mat-slider>
-        <input matSliderThumb>
-      </mat-slider> -->
-    <!-- EXAMPLE -->
-
 </div>
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
+<app-add-edit-client *ngIf="toggle"></app-add-edit-client>
 
 <br><br><br>
 
 <ng-container>
-    <!-- <div *ngFor="let client of clients"> -->
-
         <app-client-info [clients]="clients$"></app-client-info>
-
-    <!-- </div> -->
 </ng-container>
 
 

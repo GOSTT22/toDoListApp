@@ -69,11 +69,11 @@ export class MainComponent implements OnInit {
       status: ""
     };
     this.store.dispatch(setSelectedClientAction({ client: initialClient }));
-    this.router.navigate(['add-edit-client']);
-    if (!this.toggle) {
-      this.router.navigate(['']);
+    // this.router.navigate(['add-edit-client']);
+    // if (!this.toggle) {
+      // this.router.navigate(['']);
       // this.store.dispatch(clearSelectedClientAction());
-    }
+    // }
   }
 
 }
