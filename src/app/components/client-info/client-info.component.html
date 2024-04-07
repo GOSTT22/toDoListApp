@@ -8,26 +8,8 @@
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="task_name">
-    <th mat-header-cell *matHeaderCellDef> Task Name </th>
-    <td mat-cell *matCellDef="let element">
-        <!-- <mat-accordion>
-      <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header> -->
-          <div class="text1">
-            {{element.task_name}}
-          </div> 
-        <!-- </mat-expansion-panel-header>
-        <p class="text2">I'm visible because I am open</p>
-      </mat-expansion-panel>
-    </mat-accordion>   -->
-  </td>
-    
-    
-  </ng-container>
-
   <ng-container matColumnDef="description" >
-    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <th mat-header-cell *matHeaderCellDef> Name / Description </th>
     <td mat-cell *matCellDef="let element">
       <mat-accordion>
       <mat-expansion-panel hideToggle>
@@ -36,7 +18,7 @@
             {{element.task_name}} 
           </div> 
           </mat-expansion-panel-header>
-        <p class="text2">{{element.description}}</p>
+        <p class="text1">{{element.description}}</p>
       </mat-expansion-panel>
     </mat-accordion> 
   </td>

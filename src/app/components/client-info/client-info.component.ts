@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ClientInterface } from '../../store/client.interface';
 import { Store } from '@ngrx/store';
-import { deleteClientAction, setSelectedClientAction } from '../../store/client.actions';
+import { deleteClientAction, openTaskFormClientAction, setSelectedClientAction } from '../../store/client.actions';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subscription } from 'rxjs';
@@ -25,7 +25,7 @@ export interface PeriodicElement {
 
 export class ClientInfoComponent implements OnInit, AfterViewInit {
   @Input() clients: Observable<ClientInterface[]>;
-  displayedColumns: string[] = ['_id', 'task_name', 'description', 'created', 'status', 'option_edit', 'option_delete' ];
+  displayedColumns: string[] = ['_id', 'description', 'created', 'status', 'option_edit', 'option_delete' ];
   dataSource;
   subscription: Subscription;
   temp: Date;
@@ -59,6 +59,7 @@ export class ClientInfoComponent implements OnInit, AfterViewInit {
 
   editClient(client: ClientInterface) {
     this.store.dispatch(setSelectedClientAction({ client: client }));
-    this.router.navigate(['add-edit-client']);
+    this.store.dispatch(openTaskFormClientAction());
+    
   }
 }

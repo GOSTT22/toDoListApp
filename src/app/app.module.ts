@@ -33,7 +33,6 @@ import { P404Component } from './page/p404/p404.component';
 import {  } from './page/p404/p404.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

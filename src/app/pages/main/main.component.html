@@ -4,7 +4,7 @@
     <h1>TODO List Demo App</h1>
     <h4>Do it now.</h4>
     <!-- {{isFormOpened$ | json}} -->
-    <div *ngIf="isFormOpened$ | async "> HEllo </div>
+    <!-- <div *ngIf="isFormOpened$ | async "> HEllo </div> -->
 </div>
 
 <br><br>
@@ -20,7 +20,7 @@
     <button mat-stroked-button color="primary" (click)="createClient()">Add Task</button>
 </div>
 <!-- <router-outlet></router-outlet> -->
-<app-add-edit-client *ngIf="toggle"></app-add-edit-client>
+<app-add-edit-client *ngIf="isFormOpened"></app-add-edit-client>
 
 <br><br><br>
 

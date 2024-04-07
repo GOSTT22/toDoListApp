@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { ClientStateInterface } from "./clientState.interface";
-import { clearSelectedClientAction, createClientAction, createClientFailureAction, createClientSuccessAction, deleteClientSuccessAction, getAllClientsSuccessAction, getClientByIdSuccessAction, getTypesOfClients, openTaskFormClientAction, setSelectedClientAction, updateClientSuccessAction } from "./client.actions";
+import { clearSelectedClientAction, closeTaskFormClientAction, createClientAction, createClientFailureAction, createClientSuccessAction, deleteClientSuccessAction, getAllClientsSuccessAction, getClientByIdSuccessAction, getTypesOfClients, openTaskFormClientAction, setSelectedClientAction, updateClientSuccessAction } from "./client.actions";
 
 const initialState: ClientStateInterface = {
     allClients: null,
@@ -55,12 +55,22 @@ const clientReducer = createReducer(
             const newClients = state.allClients.filter(client => client._id !== action._id);
             return {...state, allClients: newClients}
         }
-    ),on(
+    ),
+    on(
         openTaskFormClientAction,
         (state, action): ClientStateInterface => {
             return {
                 ...state,
                 isFormOpened: true
+            }
+        }
+    ),
+    on(
+        closeTaskFormClientAction,
+        (state, action): ClientStateInterface => {
+            return {
+                ...state,
+                isFormOpened: false
             }
         }
     ),

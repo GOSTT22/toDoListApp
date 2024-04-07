@@ -1,31 +1,37 @@
-<p>OPERATION WITH CLIENT</p>
-<!-- {{idControl.value | json}} -->
-<ng-container *ngIf="client$ | async">
-    <form class="example-form" [formGroup]="form" (ngSubmit)="submit()" >
-        <mat-form-field class="example-full-width" *ngIf="idControl.value != 0">
+<ng-container>
+    <form class="example-form" [formGroup]="form" (ngSubmit)="submit()">
+
+        <mat-form-field class="example-full-width" *ngIf="client._id != '0'">
             <mat-label for="_id">ID:</mat-label>
-            <input matInput disabled [value]="idControl.value" type="text" id="_id">
+            <input matInput disabled [ngModel]="client._id" type="text" id="_id" name="_id">
         </mat-form-field>
-    
+
         
+    
         <mat-form-field class="example-full-width">
             <mat-label for="task_name">NAME:</mat-label>
-            <input type="text" id="task_name" [formControl]="task_nameControl" matInput>
+            <input minlength="4" type="text" id="task_name" [formControl]="form.get('task_nameControl')" matInput>
+            <mat-error *ngIf="form.get('task_nameControl').invalid && (form.get('task_nameControl').dirty || form.get('task_nameControl').touched)">
+                Имя должно содержать минимум 4 символа
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
             <mat-label for="description">Description:</mat-label>
-            <input type="text" id="description" [formControl]="descriptionControl" matInput>
+            <input minlength="4" type="text" id="description" [formControl]="form.get('descriptionControl')" matInput>
+            <mat-error *ngIf="form.get('descriptionControl').invalid && (form.get('descriptionControl').dirty || form.get('descriptionControl').touched)">
+                Описание должно содержать минимум 4 символа
+            </mat-error>
         </mat-form-field>
         
         <mat-form-field class="example-full-width">
             <mat-label for="status">STATUS:</mat-label>
-            <input type="text" id="status" [formControl]="statusControl" matInput>
+            <input type="text" id="status" [formControl]="form.get('statusControl')" matInput>
+        
         </mat-form-field>
-        <button  mat-stroked-button color="accent" type="submit">SAVE</button>
-        <button type="button" mat-stroked-button color="accent" (click)="cancel()">CANCEL</button>
-        <button type="button" mat-stroked-button color="accent" (click)="closed()">CLOSED</button>
-      </form>
+        
+        <button mat-stroked-button color="accent" type="submit">SAVE</button>
+        <button mat-stroked-button color="accent" type="button" (click)="cancel()">CANCEL</button>
+        <button mat-stroked-button color="accent" type="button" (click)="closed()">CLOSED</button>
+    </form>
 </ng-container>
-
-
