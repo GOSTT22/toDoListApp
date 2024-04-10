@@ -19,6 +19,9 @@ export enum ActionTypes {
 
     OPEN_TASK_FORM_CLIENT = '[CLIENTS] open task form',
     CLOSE_TASK_FORM_CLIENT = '[CLIENTS] close task form',
+    EDIT_MODE_FORM_CLIENT = '[CLIENTS] switch form to edit mode',
+    ADD_MODE_FORM_CLIENT = '[CLIENTS] switch form to add mode',
+
 
     SET_SELECTED_CLIENT = '[CLIENTS] set selected client',
     CLEAR_SELECTED_CLIENT = '[CLIENTS] clear selected client',

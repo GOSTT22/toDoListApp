@@ -1,32 +1,26 @@
 <ng-container>
+    <div *ngIf="isEditMode"> EDIT</div>
+    <div *ngIf="!isEditMode"> ADD</div>
     <form class="example-form" [formGroup]="form" (ngSubmit)="submit()">
-
-        <mat-form-field class="example-full-width" *ngIf="client._id != '0'">
-            <mat-label for="_id">ID:</mat-label>
-            <input matInput disabled [ngModel]="client._id" type="text" id="_id" name="_id">
-        </mat-form-field>
-
-        
-    
         <mat-form-field class="example-full-width">
             <mat-label for="task_name">NAME:</mat-label>
-            <input minlength="4" type="text" id="task_name" [formControl]="form.get('task_nameControl')" matInput>
-            <mat-error *ngIf="form.get('task_nameControl').invalid && (form.get('task_nameControl').dirty || form.get('task_nameControl').touched)">
+            <input minlength="4" type="text" id="task_name" [formControl]="form.get('task_name')" matInput>
+            <mat-error *ngIf="form.get('task_name').invalid && (form.get('task_name').dirty || form.get('task_name').touched)">
                 Имя должно содержать минимум 4 символа
             </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
             <mat-label for="description">Description:</mat-label>
-            <input minlength="4" type="text" id="description" [formControl]="form.get('descriptionControl')" matInput>
-            <mat-error *ngIf="form.get('descriptionControl').invalid && (form.get('descriptionControl').dirty || form.get('descriptionControl').touched)">
+            <input minlength="4" type="text" id="description" [formControl]="form.get('description')" matInput>
+            <mat-error *ngIf="form.get('description').invalid && (form.get('description').dirty || form.get('description').touched)">
                 Описание должно содержать минимум 4 символа
             </mat-error>
         </mat-form-field>
         
         <mat-form-field class="example-full-width">
             <mat-label for="status">STATUS:</mat-label>
-            <input type="text" id="status" [formControl]="form.get('statusControl')" matInput>
+            <input type="text" id="status" [formControl]="form.get('status')" matInput>
         
         </mat-form-field>
         

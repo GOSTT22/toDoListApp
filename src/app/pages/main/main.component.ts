@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import {
+  addModeClientAction,
   clearSelectedClientAction,
   closeTaskFormClientAction,
   createClientAction,
@@ -103,6 +104,7 @@ export class MainComponent implements OnInit {
         ? closeTaskFormClientAction()
         : openTaskFormClientAction()
     );
+    this.store.dispatch(addModeClientAction());
 
     const initialClient: ClientInterface = {
       _id: "0",

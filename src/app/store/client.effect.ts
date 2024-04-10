@@ -15,6 +15,7 @@ export class CreateClientEffect {
         switchMap(_ => {
             return this.clientsService.getClients().pipe(
                 map((clients: ClientInterface[]) => {
+                    console.log("OK",clients)
                     const indexClietns: ClientInterface[] = clients.map((client, i) => {
                         client.i = ++i;
                         return client 

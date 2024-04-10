@@ -27,6 +27,11 @@ export const isFormOpenedSelecor = createSelector(
     (clientState: ClientStateInterface) => clientState.isFormOpened
 )
 
+export const isEditModeSelecor = createSelector(
+    clientFeatureSelector,
+    (clientState: ClientStateInterface) => clientState.isEditMode
+)
+
 export const selectSelectedClientSelector = createSelector(
     clientFeatureSelector,
     (clientState: ClientStateInterface) => clientState.selectedClient

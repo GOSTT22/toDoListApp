@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { ClientStateInterface } from "./clientState.interface";
-import { clearSelectedClientAction, closeTaskFormClientAction, createClientAction, createClientFailureAction, createClientSuccessAction, deleteClientSuccessAction, getAllClientsSuccessAction, getClientByIdSuccessAction, getTypesOfClients, openTaskFormClientAction, setSelectedClientAction, updateClientSuccessAction } from "./client.actions";
+import { addModeClientAction, clearSelectedClientAction, closeTaskFormClientAction, createClientAction, createClientFailureAction, createClientSuccessAction, deleteClientSuccessAction, editModeClientAction, getAllClientsSuccessAction, getClientByIdSuccessAction, getTypesOfClients, openTaskFormClientAction, setSelectedClientAction, updateClientSuccessAction } from "./client.actions";
 
 const initialState: ClientStateInterface = {
     allClients: null,
@@ -8,7 +8,8 @@ const initialState: ClientStateInterface = {
     error: null,
     client: null,
     selectedClient: {_id: "0", task_name: "", description: "", status: "", i: 0, createdAt:""},
-    isFormOpened: false
+    isFormOpened: false,
+    isEditMode: false
 }
 
 const clientReducer = createReducer(
@@ -71,6 +72,24 @@ const clientReducer = createReducer(
             return {
                 ...state,
                 isFormOpened: false
+            }
+        }
+    ),
+    on(
+        editModeClientAction,
+        (state, action): ClientStateInterface => {
+            return {
+                ...state,
+                isEditMode: true
+            }
+        }
+    ),
+    on(
+        addModeClientAction,
+        (state, action): ClientStateInterface => {
+            return {
+                ...state,
+                isEditMode: false
             }
         }
     ),

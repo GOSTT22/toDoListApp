@@ -6,5 +6,6 @@ export interface ClientStateInterface {
     error: string | null,
     client: ClientInterface | null,
     selectedClient: ClientInterface | null,
-    isFormOpened: boolean
+    isFormOpened: boolean,
+    isEditMode: boolean
 }

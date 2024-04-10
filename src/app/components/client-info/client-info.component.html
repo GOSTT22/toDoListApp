@@ -39,14 +39,6 @@
     <td mat-cell *matCellDef="let element"  class="status" [ngClass]="{'status--todo': element.status === 'Todo', 'status--in-progress': element.status === 'in Progress', 'status--complete': element.status === 'Complete'}"> {{element.status}} </td>
   </ng-container>
 
-  <!-- <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef> Status </th>
-    <td mat-cell *matCellDef="let element" >  
-      <button mat-icon-button class="status" [ngClass]="{'status--todo': element.status === 'Todo', 'status--in-progress': element.status === 'in Progress', 'status--complete': element.status === 'Complete'}"> {{element.status}}
-      </button> 
-    </td>
-      </ng-container> -->
-
   <!-- Edit Column -->
   <ng-container matColumnDef="option_edit">
     <th mat-header-cell *matHeaderCellDef> Edit </th>

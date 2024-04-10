@@ -74,6 +74,14 @@ export const closeTaskFormClientAction = createAction(
     ActionTypes.CLOSE_TASK_FORM_CLIENT
 )
 
+export const editModeClientAction = createAction(
+    ActionTypes.EDIT_MODE_FORM_CLIENT
+)
+
+export const addModeClientAction = createAction(
+    ActionTypes.ADD_MODE_FORM_CLIENT
+)
+
 export const setSelectedClientAction = createAction(
     ActionTypes.SET_SELECTED_CLIENT,
     props<{ client: ClientInterface }>()
