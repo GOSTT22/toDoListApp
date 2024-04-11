@@ -18,11 +18,21 @@
             </mat-error>
         </mat-form-field>
         
-        <mat-form-field class="example-full-width">
+        <!-- <mat-form-field class="example-full-width">
             <mat-label for="status">STATUS:</mat-label>
             <input type="text" id="status" [formControl]="form.get('status')" matInput>
         
-        </mat-form-field>
+        </mat-form-field> -->
+
+        <mat-form-field class="example-full-width">
+            <mat-label for="status">STATUS:</mat-label>
+            <select matNativeControl required [formControl]="form.get('status')">
+              <option value="Todo">Todo</option>
+              <option value="in Progress">in Progress</option>
+              <option value="Complete">Complete</option>
+            </select>
+          </mat-form-field>
+
         
         <button mat-stroked-button color="accent" type="submit">SAVE</button>
         <button mat-stroked-button color="accent" type="button" (click)="cancel()">CANCEL</button>
