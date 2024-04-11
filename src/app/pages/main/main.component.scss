@@ -23,6 +23,16 @@ h1, h4{
 .main{
     display: flex;
     justify-content: flex-end;
+    flex-direction: column;
+    width: 10rem;
+    padding-bottom: 2rem;
+}
+
+.middle-group{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    justify-content: space-between;
 }
 
 .example-container mat-form-field + mat-form-field {

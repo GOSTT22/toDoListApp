@@ -57,7 +57,7 @@ export class AddEditClientComponent implements OnInit {
     this.form = this.fb.group({
       task_name: ["", [Validators.required, Validators.minLength(4)]],
       description: ["", [Validators.required, Validators.minLength(4)]],
-      status: ["Todo", Validators.required],
+      status: ["", Validators.required],
     });
   }
 

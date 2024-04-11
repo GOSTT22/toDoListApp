@@ -19,6 +19,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTabsModule} from '@angular/material/tabs';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -45,6 +46,7 @@ import {  } from './page/p404/p404.component';
   imports: [
     MatCardModule, MatRadioModule, FormsModule, MatSliderModule, MatProgressSpinnerModule,
     MatCheckboxModule,
+    MatTabsModule,
     MatExpansionModule,
     FormsModule,
     MatFormFieldModule,
