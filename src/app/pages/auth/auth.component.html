@@ -30,12 +30,29 @@
     </mat-tab>
     <mat-tab label="REGISTER">
         <mat-card>
-            <mat-card-title>Login</mat-card-title>
+            <mat-card-title>REGISTER</mat-card-title>
         <mat-card-content>
         <form [formGroup]="form" (ngSubmit)="submit()">
           <p>
             <mat-form-field>
               <input type="text" matInput placeholder="Username" formControlName="username">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input type="email" matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field>
+              <input type="text" matInput placeholder="First Name" formControlName="firstname">
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field>
+              <input type="text" matInput placeholder="Last Name" formControlName="lastname">
             </mat-form-field>
           </p>
         

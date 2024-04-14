@@ -1,22 +1,12 @@
-// p{
-//     display: flex;
-//     align-items: center;
-// }
+
 table {
     width: 100%;
-    // background-color: #808080;
   }
 
   tr.mat-header-row {
     height: 56px;
     size: 20px; 
   
-}
-
-tr.mat-header-row {
-    height: 56px;
-    size: 30px;
-    
 }
 
 th.mat-header-cell, td.mat-cell{
@@ -49,7 +39,7 @@ th.mat-header-cell, td.mat-cell{
     font-size: 15px;
 }
 .mat-header-row{
-    background-color: black;
+    background-color: #444cb0;
 }
 
 .mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
@@ -70,28 +60,34 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
     padding-right: 15px;
 }
 
-.status {
-    // border-radius: 15%;
-    color: black;
-    
-
-    &--todo {
-        background-color: #54cede;
-        // border: 0.5mm solid black;
-        
-    }
-
-    &--in-progress {
-        // border: 0.5mm solid orange;
-        background-color: rgb(250, 191, 79);
-        // border: 0.5mm solid orange;
-
-        
-    }
-
-    &--complete {
-        // background: green;
-        background-color: rgb(67, 154, 67);
-        // border: 0.5mm solid green;
-    }
+.mat-column-description {
+    // padding-left: 16px;
+    font-size: 20px;
 }
+
+.status {
+    color: white;
+    font-weight: bold;
+   
+  
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+  
+    &--todo {
+      background: linear-gradient(135deg, #56ccf2, #2f80ed);
+      // Используйте градиент или ваш брендовый цвет
+    }
+  
+    &--in-progress {
+      background: linear-gradient(135deg, #f2994a, #f2c94c);
+      // Градиент оттенков оранжевого
+    }
+  
+    &--complete {
+      background: linear-gradient(135deg, #27ae60, #219653);
+      // Зеленый градиент для завершенного статуса
+    }
+  }
+

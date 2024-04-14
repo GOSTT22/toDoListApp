@@ -1,12 +1,12 @@
 <ng-container>
-    <div *ngIf="isEditMode"> EDIT</div>
-    <div *ngIf="!isEditMode"> ADD</div>
+    <div *ngIf="isEditMode"> Edit Task</div>
+    <div *ngIf="!isEditMode"> Add NEW Task</div>
     <form class="example-form" [formGroup]="form" (ngSubmit)="submit()">
         <mat-form-field class="example-full-width">
             <mat-label for="task_name">NAME:</mat-label>
             <input minlength="4" type="text" id="task_name" [formControl]="form.get('task_name')" matInput>
             <mat-error *ngIf="form.get('task_name').invalid && (form.get('task_name').dirty || form.get('task_name').touched)">
-                Имя должно содержать минимум 4 символа
+                The name must contain at least 4 characters
             </mat-error>
         </mat-form-field>
 
@@ -14,7 +14,7 @@
             <mat-label for="description">Description:</mat-label>
             <input minlength="4" type="text" id="description" [formControl]="form.get('description')" matInput>
             <mat-error *ngIf="form.get('description').invalid && (form.get('description').dirty || form.get('description').touched)">
-                Описание должно содержать минимум 4 символа
+                Description must contain at least 4 characters
             </mat-error>
         </mat-form-field>
         
@@ -33,9 +33,10 @@
             </select>
           </mat-form-field>
 
-        
-        <button mat-stroked-button color="accent" type="submit">SAVE</button>
-        <button mat-stroked-button color="accent" type="button" (click)="cancel()">CANCEL</button>
-        <button mat-stroked-button color="accent" type="button" (click)="closed()">CLOSED</button>
+        <div class="buttons">
+            <button mat-flat-button color="primary" type="submit">SAVE</button>
+            <button mat-flat-button type="button" (click)="cancel()">CANCEL</button>
+            <button class="last-button" mat-button type="button" (click)="closed()">CLOSED</button>
+        </div>
     </form>
 </ng-container>
