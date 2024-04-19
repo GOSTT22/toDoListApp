@@ -2,23 +2,20 @@
 :host{
     margin: 0;
     padding: 0;
+    display: flex;
 }
 .container{
     height: auto;
-    width: 60%;
+    // width: 60%;
     margin: 0 auto;
+    // padding: 20px;
 }
 
 .name_app{
     display: flex;
     flex-direction: column;
     color: #444cb0;
-}
-
-h1, h4{
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
+    
 }
 
 .main{
@@ -26,14 +23,19 @@ h1, h4{
     justify-content: flex-end;
     flex-direction: column;
     width: 10rem;
-    padding-bottom: 2rem;
 }
 
-.middle-group{
+.header{
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 2rem;
+    align-items: center;
     justify-content: space-between;
+    height: 150px;
+}
+
+h1, h4{
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
 }
 
 .example-container mat-form-field + mat-form-field {
@@ -44,4 +46,72 @@ h1, h4{
     width: 150px;
   }
 
+  .mat-stroked-button{
+    border-color: #444cb0;
+  }
 
+  .filter{
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
+  }
+
+  .nav-sidebar {
+    width: 240px; // Ширина sidebar, как на изображении
+    background-color: #8EB8E5; // Тёмно-синий цвет фона
+    height: 100vh;
+    position: fixed;
+    padding: 20px;
+  
+    .logo-section {
+      text-align: center;
+      margin-bottom: 30px;
+  
+      .logo {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  
+    .nav-menu {
+      ul {
+        list-style: none;
+        padding: 0;
+  
+        li {
+          padding: 10px 0;
+          
+          a {
+            color: #000000;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+  
+            i {
+              margin-right: 10px;
+              // Используй соответствующие классы для иконок
+            }
+          }
+        }
+      }
+    }
+  
+    .logout-section {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+  
+      a {
+        color: #000000;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+  
+        i {
+          margin-right: 10px;
+          // Используй соответствующий класс для иконки выхода
+        }
+      }
+    }
+  }
+   

@@ -1,32 +1,51 @@
-<br /><br /><br />
-<div class="container">
-  <div class="name_app">
-    <h1>TODO List Demo App</h1>
-    <h4>Do it now.</h4>
+<!-- Боковое меню -->
+<aside class="nav-sidebar">
+  <div class="logo-section">
+    <h1><b>TODO List Demo App</b></h1>
   </div>
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="#"><i class="icon-overview"></i> Overview</a></li>
+      <li><a href="#"><i class="icon-transactions"></i> Transactions</a></li>
+      <li><a href="#"><i class="icon-customers"></i> Customers</a></li>
+      <li><a href="#"><i class="icon-reports"></i> Reports</a></li>
+      <li><a href="#"><i class="icon-settings"></i> Settings</a></li>
+      <li><a href="#"><i class="icon-developer"></i> Developer</a></li>
+    </ul>
+  </nav>
+  <div class="logout-section">
+    <a href="#"><i class="icon-logout"></i> Log out</a>
+  </div>
+</aside>
 
-  <br /><br />
-  <div class="middle-group">
+
+
+<div class="container">
+  <div class="header">
+    <div class="name_app">
+      <h1>TODO List Demo App</h1>
+    </div>
     <div class="main">
       <button mat-stroked-button color="primary" (click)="createClient()">
         Add Task
       </button>
-
-      <ng-container *ngIf="types$ | async as types">
-        <mat-form-field>
-          <select
-            matNativeControl
-            (change)="selectedValue($event.target.value)"
-          >
-            <option *ngFor="let type of types" [value]="type">
-              {{ type }}
-            </option>
-          </select>
-        </mat-form-field>
-      </ng-container>
     </div>
-    <app-add-edit-client *ngIf="isFormOpened"></app-add-edit-client>
   </div>
+
+  <ng-container *ngIf="types$ | async as types">
+    <div class="filter">
+    <h4>Filter by Status:</h4>
+    <mat-form-field>
+      <select matNativeControl (change)="selectedValue($event.target.value)">
+        <option *ngFor="let type of types" [value]="type">
+          {{ type }}
+        </option>
+      </select>
+    </mat-form-field>
+  </div>
+  </ng-container>
+
+  <app-add-edit-client *ngIf="isFormOpened"></app-add-edit-client>
 
   <ng-container>
     <app-client-info [clients]="clients$"></app-client-info>
@@ -36,4 +55,3 @@
     {{ error }}
   </ng-container>
 </div>
-

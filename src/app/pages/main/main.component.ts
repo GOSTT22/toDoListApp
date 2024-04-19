@@ -72,6 +72,7 @@ export class MainComponent implements OnInit {
   isFormOpened: boolean;
 
   constructor(private store: Store, private router: Router) {}
+  
 
   ngOnInit(): void {
     this.store.dispatch(getAllClientsAction());

@@ -28,6 +28,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { MainComponent } from './pages/main/main.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { P404Component } from './page/p404/p404.component';
@@ -45,7 +46,8 @@ import {  } from './page/p404/p404.component';
   ],
   imports: [
     MatCardModule, MatRadioModule, FormsModule, MatSliderModule, MatProgressSpinnerModule,
-    MatCheckboxModule,
+    MatCheckboxModule, 
+    MatToolbarModule, 
     MatTabsModule,
     MatExpansionModule,
     FormsModule,

@@ -4,9 +4,17 @@
     <td mat-cell *matCellDef="let element">{{ element.i }}</td>
   </ng-container>
   
+  <ng-container matColumnDef="task_name">
+    <th mat-header-cell *matHeaderCellDef>Task Name </th>
+    <td mat-cell *matCellDef="let element">
+      <div class="text1">
+        {{ element.task_name }}
+      </div>
+    </td>
+  </ng-container>
 
   <ng-container matColumnDef="description">
-    <th mat-header-cell *matHeaderCellDef>Name / Description</th>
+    <th mat-header-cell *matHeaderCellDef>Description</th>
     <td mat-cell *matCellDef="let element">
       <mat-accordion>
         <mat-expansion-panel hideToggle>

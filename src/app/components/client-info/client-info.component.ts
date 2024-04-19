@@ -25,7 +25,7 @@ export interface PeriodicElement {
 
 export class ClientInfoComponent implements OnInit, AfterViewInit {
   @Input() clients: Observable<ClientInterface[]>;
-  displayedColumns: string[] = ['_id', 'description', 'created', 'status', 'option_edit', 'option_delete' ];
+  displayedColumns: string[] = ['_id', 'task_name', 'description', 'created', 'status', 'option_edit', 'option_delete' ];
   dataSource;
   subscription: Subscription;
   temp: Date;

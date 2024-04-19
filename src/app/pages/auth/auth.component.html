@@ -3,7 +3,7 @@
         <mat-card>
             <mat-card-title>Login</mat-card-title>
         <mat-card-content>
-        <form [formGroup]="form" (ngSubmit)="submit()">
+        <form [formGroup]="formLogin" (ngSubmit)="submitLogin()">
           <p>
             <mat-form-field>
               <input type="text" matInput placeholder="Username" formControlName="username">
@@ -32,7 +32,7 @@
         <mat-card>
             <mat-card-title>REGISTER</mat-card-title>
         <mat-card-content>
-        <form [formGroup]="form" (ngSubmit)="submit()">
+        <form [formGroup]="formRegister" (ngSubmit)="submitRegister()">
           <p>
             <mat-form-field>
               <input type="text" matInput placeholder="Username" formControlName="username">
