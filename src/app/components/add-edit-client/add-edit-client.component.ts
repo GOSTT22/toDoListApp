@@ -12,9 +12,9 @@ import {
   getTypesOfClients,
   setSelectedClientAction,
   updateClientAction,
-} from "../../store/client.actions";
-import { isEditModeSelecor, selectSelectedClientSelector } from "../../store/client.selector";
-import { ClientInterface } from "../../store/client.interface";
+} from "../../store/task/client.actions";
+import { isEditModeSelecor, selectSelectedClientSelector } from "../../store/task/client.selector";
+import { ClientInterface } from "../../store/task/client.interface";
 
 @Component({
   selector: "app-add-edit-client",

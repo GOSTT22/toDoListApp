@@ -9,16 +9,16 @@ import {
   getTypesOfClients,
   openTaskFormClientAction,
   setSelectedClientAction,
-} from "../../store/client.actions";
+} from "../../store/task/client.actions";
 import {
   ErrorSelector,
   allClientsSelector,
   allTypesSelector,
   isFormOpenedSelecor,
-} from "../../store/client.selector";
+} from "../../store/task/client.selector";
 import { map, tap } from "rxjs/operators";
 import { BehaviorSubject, Observable, Subscription, combineLatest } from "rxjs";
-import { ClientInterface } from "../../store/client.interface";
+import { ClientInterface } from "../../store/task/client.interface";
 import { Router } from "@angular/router";
 import { FormControl } from "@angular/forms";
 import { ThemePalette } from "@angular/material/core";

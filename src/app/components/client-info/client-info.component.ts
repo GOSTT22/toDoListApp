@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { ClientInterface } from '../../store/client.interface';
+import { ClientInterface } from '../../store/task/client.interface';
 import { Store } from '@ngrx/store';
-import { addModeClientAction, deleteClientAction, editModeClientAction, getAllClientsAction, getTypesOfClients, openTaskFormClientAction, setSelectedClientAction } from '../../store/client.actions';
+import { addModeClientAction, deleteClientAction, editModeClientAction, getAllClientsAction, getTypesOfClients, openTaskFormClientAction, setSelectedClientAction } from '../../store/task/client.actions';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subscription } from 'rxjs';

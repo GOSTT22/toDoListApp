@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { ActionTypes } from "./action-types";
+import { ActionTypes } from "../action-types";
 import { ClientInterface } from "./client.interface";
 
 
