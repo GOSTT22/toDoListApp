@@ -30,5 +30,8 @@ export enum ActionTypes {
     UPDATE_CLIENT_SUCCESS = '[CLIENTS] update client success',
     UPDATE_CLIENT_FAILURE = '[CLIENTS] update client failure',
 
-    GET_LOGIN_DATA ='[AUTH] get data from login form'
+    GET_LOGIN_DATA ='[AUTH] get data from login form',
+    CREATE_LOGIN_DATA ='[AUTH] create data from login form',
+    CREATE_LOGIN_DATA_SUCCESS = '[AUTH] create login data success',
+    CREATE_LOGIN_DATA_FAILURE = '[AUTH] create login data failure',
 }

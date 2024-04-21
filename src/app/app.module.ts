@@ -8,6 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './store/task/client.reducers';
+import { reducersAuth } from './store/auth/auth.reducers';
 import { CreateClientEffect } from './store/task/client.effect';
 import { ClientsService } from './store/task/clients.service';
 import { ClientInfoComponent } from './components/client-info/client-info.component';
@@ -65,6 +66,7 @@ import {  } from './page/p404/p404.component';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
     StoreModule.forFeature('client', reducers),
+    StoreModule.forFeature('auth', reducersAuth),
     EffectsModule.forFeature([CreateClientEffect]),
     BrowserAnimationsModule
   ],

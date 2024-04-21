@@ -7,6 +7,8 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
+import { createLoginDataAction } from "src/app/store/auth/auth.actions";
+import { LoginInterface } from "src/app/store/auth/login.interface";
 
 @Component({
   selector: "app-auth",
@@ -44,6 +46,10 @@ export class AuthComponent implements OnInit {
       return this.error="Fill out the form correctly"
     }
     console.log(this.formLogin.value);
+    let obj: LoginInterface = {...this.formLogin.value}
+    console.log("OGJECT", obj)
+    this.store.dispatch(createLoginDataAction({ login: obj }));
+    
   }
 
   submitRegister() {

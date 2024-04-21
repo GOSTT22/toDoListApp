@@ -39,7 +39,7 @@ th.mat-header-cell, td.mat-cell{
     font-size: 15px;
 }
 .mat-header-row{
-    background-color: #444cb0;
+    background-color: black;
 }
 
 .mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
@@ -89,5 +89,10 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
       background: linear-gradient(135deg, #27ae60, #219653);
       // Зеленый градиент для завершенного статуса
     }
+  }
+
+  .mat-elevation-z8 {
+    border-radius: 8px; /* или любое другое значение для создания округлости */
+    overflow: hidden; /* это гарантирует, что содержимое таблицы не выходит за рамки скругления */
   }
 
