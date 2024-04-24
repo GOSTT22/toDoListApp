@@ -8,7 +8,7 @@ import {
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { createLoginDataAction } from "src/app/store/auth/auth.actions";
-import { LoginInterface } from "src/app/store/auth/login.interface";
+import { LoginInterface } from "src/app/store/auth/auth.interface";
 
 @Component({
   selector: "app-auth",

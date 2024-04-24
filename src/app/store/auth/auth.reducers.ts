@@ -5,8 +5,8 @@ import { createLoginDataAction, createLoginDataFailureAction, createLoginDataSuc
 const initialState: AuthStateInterface = {
     types: null,
     error: null,
-    login: null
-    // token: null
+    login: null,
+    sesion: null
 }
 
 const authReducer = createReducer(
@@ -28,7 +28,7 @@ const authReducer = createReducer(
         createLoginDataSuccesAction,
         (state, action): AuthStateInterface => {
             console.log(state, action, "succes action reducer")
-            return {...state}
+            return {...state, sesion: action.sesion}
             
         }
     ),

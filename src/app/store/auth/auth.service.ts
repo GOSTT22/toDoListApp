@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
-import { LoginInterface } from "./login.interface";
+import { LoginInterface } from "./auth.interface";
 import { tap, catchError, delay} from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
-    private url = '/login';
+    // private url = '/login';
 
     constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class AuthService {
     // }
 
     createLogin(newLogin: LoginInterface): Observable<any> {
-        return this.http.post<LoginInterface>(this.url, newLogin).pipe(
+        return this.http.post<LoginInterface>("http://localhost:3000/login", newLogin).pipe(
           tap(_ => console.log('Login create')),
           catchError((error) => throwError(`Server do not response. Error : ${error.toString()}`))
         );
