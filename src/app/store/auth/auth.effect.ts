@@ -2,10 +2,10 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "./auth.service";
 import { catchError, map, switchMap, tap } from "rxjs/operators";
-import { LoginInterface, SesionInterface } from "./auth.interface";
+import { LoginInterface, RegisterInterface, SesionInterface } from "./auth.interface";
 import { HttpErrorResponse } from "@angular/common/http";
 import { of } from "rxjs";
-import { createLoginDataAction, createLoginDataFailureAction, createLoginDataSuccesAction } from "./auth.actions";
+import { createLoginDataAction, createLoginDataFailureAction, createLoginDataSuccesAction, createRegisterDataAction, createRegisterDataFailureAction, createRegisterDataSuccesAction } from "./auth.actions";
 
 @Injectable()
 export class CreateAuthEffect {
@@ -21,6 +21,20 @@ export class CreateAuthEffect {
         }),
         catchError((errorResponse: HttpErrorResponse) => {
             return of(createLoginDataFailureAction({ errors: errorResponse.error.errors}))
+        })
+    ));
+
+    createRegister$ = createEffect(() => this.actions$.pipe(
+        ofType(createRegisterDataAction),
+        switchMap(({ register }) => {
+            return this.authService.createRegister(register).pipe(
+                map((register: RegisterInterface) => {
+                    return createRegisterDataSuccesAction({ register })
+                })
+            )
+        }),
+        catchError((errorResponse: HttpErrorResponse) => {
+            return of(createRegisterDataFailureAction({ errors: errorResponse.error}))
         })
     ));
 

@@ -7,8 +7,8 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { createLoginDataAction } from "src/app/store/auth/auth.actions";
-import { LoginInterface } from "src/app/store/auth/auth.interface";
+import { createLoginDataAction, createRegisterDataAction } from "src/app/store/auth/auth.actions";
+import { LoginInterface, RegisterInterface } from "src/app/store/auth/auth.interface";
 
 @Component({
   selector: "app-auth",
@@ -53,8 +53,12 @@ export class AuthComponent implements OnInit {
   }
 
   submitRegister() {
-    if (this.formRegister.valid) {
-      
+    if (!this.formRegister.valid) {
+      return this.error="Fill out the form correctly"
     }
+    console.log(this.formRegister.value);
+    let obj: RegisterInterface = {...this.formRegister.value}
+    console.log("OGJECT", obj)
+    this.store.dispatch(createRegisterDataAction({ register: obj }));
   }
 }

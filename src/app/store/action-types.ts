@@ -34,4 +34,8 @@ export enum ActionTypes {
     CREATE_LOGIN_DATA ='[AUTH] create data from login form',
     CREATE_LOGIN_DATA_SUCCESS = '[AUTH] create login data success',
     CREATE_LOGIN_DATA_FAILURE = '[AUTH] create login data failure',
+
+    CREATE_REGISTER_DATA ='[AUTH] create data from register form',
+    CREATE_REGISTER_DATA_SUCCESS = '[AUTH] create register data success',
+    CREATE_REGISTER_DATA_FAILURE = '[AUTH] create register data failure',
 }

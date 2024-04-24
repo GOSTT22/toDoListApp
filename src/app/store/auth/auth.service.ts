@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
-import { LoginInterface } from "./auth.interface";
+import { LoginInterface, RegisterInterface } from "./auth.interface";
 import { tap, catchError, delay} from 'rxjs/operators';
 
 @Injectable()
@@ -23,6 +23,13 @@ export class AuthService {
           catchError((error) => throwError(`Server do not response. Error : ${error.toString()}`))
         );
     }
+
+    createRegister(newRegsiter:RegisterInterface): Observable<any> {
+      return this.http.post<RegisterInterface>("http://localhost:3000/register", newRegsiter).pipe(
+        tap(_ => console.log('Register create')),
+        catchError((error) => throwError(`Server do not response. Error : ${error.toString()}`))
+      );
+  }
 
     // deleteClient(_id: string): Observable<any> {
     //     return this.http.delete<ClientInterface>(this.url + '/' + _id).pipe(
