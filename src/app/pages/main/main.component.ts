@@ -26,6 +26,7 @@ import {
   ProgressSpinnerMode,
   MatProgressSpinnerModule,
 } from "@angular/material/progress-spinner";
+import { selectAuthError } from "src/app/store/auth/auth.selector";
 
 @Component({
   selector: "app-main",
@@ -46,8 +47,10 @@ export class MainComponent implements OnInit {
     description: "basketball team",
     status: "Todo",
   };
-
   selectedType$: BehaviorSubject<string> = new BehaviorSubject("");
+
+  
+  
 
   types$ = this.store.select(allTypesSelector).pipe(
     tap((types) => {
@@ -71,7 +74,9 @@ export class MainComponent implements OnInit {
 
   isFormOpened: boolean;
 
-  constructor(private store: Store, private router: Router) {}
+  constructor(private store: Store, private router: Router) {
+   
+  }
   
 
   ngOnInit(): void {
@@ -79,6 +84,7 @@ export class MainComponent implements OnInit {
     setTimeout(() => {
       this.store.dispatch(getTypesOfClients());
     }, 100);
+
 
     this.isFormOpened$ = this.store.select(isFormOpenedSelecor);
     this.subscription = this.isFormOpened$.subscribe((data) => {
