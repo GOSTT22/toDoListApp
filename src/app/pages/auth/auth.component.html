@@ -1,78 +1,87 @@
-<mat-tab-group dynamicHeight>
-    <mat-tab label="LOGIN">
-        <mat-card>
-            <mat-card-title>Login</mat-card-title>
-        <mat-card-content>
-        <form [formGroup]="formLogin" (ngSubmit)="submitLogin()">
-          <p>
-            <mat-form-field>
-              <input type="text" matInput placeholder="Username" formControlName="username">
-            </mat-form-field>
-          </p>
-        
-          <p>
-            <mat-form-field>
-              <input type="password" matInput placeholder="Password" formControlName="password">
-            </mat-form-field>
-          </p>
-        
-          <p *ngIf="error" class="error">
-            {{ error }}
-          </p>
-        
-          <div class="button">
-            <button type="submit" mat-button>Login</button>
-          </div>
-        
-        </form>
-        </mat-card-content>
-        </mat-card>
-    </mat-tab>
-    <mat-tab label="REGISTER">
-        <mat-card>
-            <mat-card-title>REGISTER</mat-card-title>
-        <mat-card-content>
-        <form [formGroup]="formRegister" (ngSubmit)="submitRegister()">
-          <p>
-            <mat-form-field>
-              <input type="text" matInput placeholder="Username" formControlName="username">
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field>
-              <input type="email" matInput placeholder="Email" formControlName="email">
-            </mat-form-field>
-          </p>
+<mat-tab-group dynamicHeight class="auth-container">
+  <mat-tab label="LOGIN">
+      <mat-card>
+          <mat-card-title>Login</mat-card-title>
+      <mat-card-content>
+      <form [formGroup]="formLogin" (ngSubmit)="submitLogin()">
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Username" formControlName="username">
+          </mat-form-field>
+        </p>
+      
+        <p>
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+        </p>
+      
+        <p *ngIf="error" class="error">
+          {{ error }}
+        </p>
 
-          <p>
-            <mat-form-field>
-              <input type="text" matInput placeholder="First Name" formControlName="firstname">
-            </mat-form-field>
-          </p>
+        <p *ngIf="selectedError$ | async as selectedError" class="error">
+          {{ selectedError}}
+        </p>
+      
+        <div class="button">
+          <button type="submit" mat-button>Login</button>
+        </div>
+      
+      </form>
+      </mat-card-content>
+      </mat-card>
+  </mat-tab>
+  <mat-tab label="REGISTER">
+      <mat-card>
+          <mat-card-title>REGISTER</mat-card-title>
+      <mat-card-content>
+      <form [formGroup]="formRegister" (ngSubmit)="submitRegister()">
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Username" formControlName="username">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input type="email" matInput placeholder="Email" formControlName="email">
+          </mat-form-field>
+        </p>
 
-          <p>
-            <mat-form-field>
-              <input type="text" matInput placeholder="Last Name" formControlName="lastname">
-            </mat-form-field>
-          </p>
-        
-          <p>
-            <mat-form-field>
-              <input type="password" matInput placeholder="Password" formControlName="password">
-            </mat-form-field>
-          </p>
-        
-          <p *ngIf="error" class="error">
-            {{ error }}
-          </p>
-        
-          <div class="button">
-            <button type="submit" mat-button>Login</button>
-          </div>
-        
-        </form>
-        </mat-card-content>
-        </mat-card>
-    </mat-tab>
-  </mat-tab-group>
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="First Name" formControlName="firstname">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Last Name" formControlName="lastname">
+          </mat-form-field>
+        </p>
+      
+        <p>
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+        </p>
+      
+        <p *ngIf="error" class="error">
+          {{ error }}
+        </p>
+
+        <!-- <p *ngIf="selectedError$ | async as selectedError" class="error">
+          {{ selectedError}}  ASDawda++
+        </p> -->
+      
+        <div class="button">
+          <button type="submit" mat-button>Login</button>
+        </div>
+      
+      </form>
+      </mat-card-content>
+      </mat-card>
+  </mat-tab>
+</mat-tab-group>
+
 

@@ -1,12 +1,7 @@
-:host {
-  display: flex;
-}
-
-.container {
-  min-height: 100vh;
-  flex-grow: 1;
-  margin-left: 240px;
-  padding: 80px 20px 20px;
+.site-container {
+  width: 70%;
+  margin: 0 auto; /* Автоматические отступы для центрирования */
+  padding-top: 60px; /* Добавляем отступ сверху, чтобы контент не перекрывался .dashboard-header */
   box-sizing: border-box;
 }
 
@@ -22,118 +17,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white; /* Или любой другой цвет */
-  color: black; /* Или любой другой цвет */
-  padding: 10px 20px;
   position: fixed;
-  width: calc(100% - 240px); /* вычитаем ширину бокового меню */
+  width: 70%; /* Задаем ширину 70% */
+  margin: 0 auto; /* Автоматические отступы для центрирования */
   height: 60px;
-  z-index: 1000;
   top: 0;
-  left: 240px; /* смещаем на ширину бокового меню */
   box-sizing: border-box;
+  background-color: white; /* Цвет фона */
+  color: black; /* Цвет текста */
 }
 
-.nav-sidebar {
-  width: 240px; /* фиксированная ширина бокового меню */
-  background-color: #8EB8E5;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 500; /* Меньше чем у header, чтобы не перекрывать его */
-  overflow-y: auto; /* Добавляем скролл, если содержимое боковой панели длиннее экрана */
+/* Убедитесь, что .container или другой родительский блок не ограничивает ширину, например: */
+.container {
+  padding-top: 60px; /* Добавляем отступ сверху, чтобы контент не перекрывался .dashboard-header */
+  /* Убедитесь, что другие стили не ограничивают ширину этого элемента */
 }
-
-.nav-sidebar {
-  width: 240px; /* или нужную вам ширину */
-  background-color: #8EB8E5; /* цвет фона */
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Распределение пространства между логотипом, меню и кнопкой выхода */
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.nav-logo-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Центрирование логотипа и названия */
-  margin-bottom: 20px; /* Отступ от логотипа до меню */
-}
-
-.nav-logo {
-  max-width: 100px; /* Регулируйте размер вашего логотипа */
-  margin-bottom: 10px; /* Отступ между логотипом и названием бренда */
-}
-
-.nav-brand-name {
-  color: black; /* цвет текста */
-  text-align: center;
-  margin: 0; /* Убираем стандартные отступы */
-}
-
-.nav-menu ul {
-  list-style: none;
-  padding: 0;
-  width: 100%;
-}
-
-.nav-menu li a {
-  color: black; /* цвет ссылок */
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-}
-
-.nav-menu li a i {
-  margin-right: 10px; /* Отступ иконки от текста */
-}
-
-.nav-logout-section {
-  display: flex;
-  justify-content: center; /* Центрирование кнопки выхода */
-}
-
-.nav-logout-section a {
-  color: black; /* цвет ссылки выхода */
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
-
-.nav-logout-section a i {
-  margin-right: 10px; /* Отступ иконки от текста */
-}
-
-// .filter {
-//   background-color: black; /* Темный фон, как на изображении */
-//   padding: 10px 20px;
-//   border-radius: 8px; /* Скругленные углы для эффекта 'pill' */
-//   color: white; /* Белый текст */
-//   display: inline-flex; /* Для выравнивания элементов в ряд */
-//   align-items: center; /* Центрирование элементов по вертикали */
-//   // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Слегка выраженная тень */
-//   margin-bottom: 1rem; /* Отступ от следующего элемента на странице */
-// }
-
-// .filter h4 {
-//   margin-right: 10px; /* Отступ заголовка от выпадающего списка */
-//   font-size: 1rem; /* Уменьшенный размер шрифта для заголовка */
-// }
-
-// .custom-select {
-//   // border: 2px solid #444; /* Граница для селекта подходящего цвета */
-//   background-color: white; /* Немного более светлый фон для селекта */
-//   color: black; /* Белый текст в селекте */
-//   border-radius: 15px; /* Скругленные углы для селекта */
-//   padding: 5px 10px;
-// }
 
 .filter {
   background-color: #8EB8E5; /* Синий фон */
@@ -143,7 +41,7 @@
   display: inline-flex; /* Для выравнивания элементов в ряд */
   align-items: center; /* Центрирование элементов по вертикали */
   margin-bottom: 1rem; /* Отступ от следующего элемента на странице */
-  width: 50%; /* Если вы хотите, чтобы фильтр занимал половину ширины таблицы */
+  width: 300px; /* Если вы хотите, чтобы фильтр занимал половину ширины таблицы */
   justify-content: space-between; /* Распределение элементов по ширине контейнера */
 }
 
@@ -157,23 +55,12 @@
   background-color: #8EB8E5; /* Синий фон, как и у фильтра */
   color: black; /* Белый текст */
   border-radius: 8px; /* Скругленные углы */
-  padding: 10px;
-  -webkit-appearance: none; /* Убираем стандартную стрелку селекта для Webkit браузеров */
-  -moz-appearance: none; /* Убираем стандартную стрелку селекта для Firefox */
   appearance: none; /* Убираем стандартную стрелку селекта */
   border: none; /* Убираем границу */
   outline: none; /* Убираем контур при фокусе */
-  /* Добавляем стилизованную стрелку, если нужно */
-  // background: url('') no-repeat right 10px center / 20px 20px;
-  padding-right: 30px; /* Достаточно места для стрелки */
 }
 
 /* Обертка для селекта, не нужна, если не используете псевдоэлементы */
 .custom-select-wrapper::after {
   content: ''; /* Убираем содержимое, если не используем псевдоэлемент для стрелки */
 }
-
-
-
-
-

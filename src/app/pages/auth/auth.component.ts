@@ -6,9 +6,12 @@ import {
   Validators,
 } from "@angular/forms";
 import { Router } from "@angular/router";
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
+import { BehaviorSubject, Observable } from "rxjs";
+import { tap } from "rxjs/operators";
 import { createLoginDataAction, createRegisterDataAction } from "src/app/store/auth/auth.actions";
 import { LoginInterface, RegisterInterface } from "src/app/store/auth/auth.interface";
+import { selectAuthError } from "src/app/store/auth/auth.selector";
 
 @Component({
   selector: "app-auth",
@@ -18,6 +21,8 @@ import { LoginInterface, RegisterInterface } from "src/app/store/auth/auth.inter
 export class AuthComponent implements OnInit {
   formLogin: FormGroup;
   error: string | null;
+  error$: BehaviorSubject<string> = new BehaviorSubject("");
+  selectedError$: Observable<string | null>;
 
   formRegister: FormGroup = new FormGroup({
     username: new FormControl(""),
@@ -36,12 +41,14 @@ export class AuthComponent implements OnInit {
       username: ["", [Validators.required, Validators.minLength(4)]],
       password: ["", [Validators.required, Validators.minLength(8)]],
     });
+    this.selectedError$ = this.store.select(selectAuthError);
   }
 
   ngOnInit(): void {
   }
 
   submitLogin() {
+    this.error = null;
     if (!this.formLogin.valid) {
       return this.error="Fill out the form correctly"
     }

@@ -17,12 +17,6 @@
                 Description must contain at least 4 characters
             </mat-error>
         </mat-form-field>
-        
-        <!-- <mat-form-field class="example-full-width">
-            <mat-label for="status">STATUS:</mat-label>
-            <input type="text" id="status" [formControl]="form.get('status')" matInput>
-        
-        </mat-form-field> -->
 
         <mat-form-field class="example-full-width">
             <mat-label for="status">STATUS:</mat-label>
@@ -34,8 +28,8 @@
           </mat-form-field>
 
         <div class="buttons">
-            <button mat-flat-button color="primary" type="submit">SAVE</button>
-            <button mat-flat-button type="button" (click)="cancel()">CANCEL</button>
+            <button mat-button type="submit">SAVE</button>
+            <button mat-button type="button" (click)="cancel()">CANCEL</button>
             <button class="last-button" mat-button type="button" (click)="closed()">CLOSED</button>
         </div>
     </form>

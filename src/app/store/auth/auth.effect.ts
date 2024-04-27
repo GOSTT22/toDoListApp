@@ -20,7 +20,8 @@ export class CreateAuthEffect {
             )
         }),
         catchError((errorResponse: HttpErrorResponse) => {
-            return of(createLoginDataFailureAction({ errors: errorResponse.error.errors}))
+            console.log(errorResponse.error, errorResponse.message,"ResponseError")
+            return of(createLoginDataFailureAction({ errors: errorResponse.error}))
         })
     ));
 

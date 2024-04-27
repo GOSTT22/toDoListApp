@@ -20,14 +20,14 @@ export class AuthService {
     createLogin(newLogin: LoginInterface): Observable<any> {
         return this.http.post<LoginInterface>("http://localhost:3000/login", newLogin).pipe(
           tap(_ => console.log('Login create')),
-          catchError((error) => throwError(`Server do not response. Error : ${error.toString()}`))
+          catchError((error) => throwError(error))
         );
     }
 
     createRegister(newRegsiter:RegisterInterface): Observable<any> {
       return this.http.post<RegisterInterface>("http://localhost:3000/register", newRegsiter).pipe(
         tap(_ => console.log('Register create')),
-        catchError((error) => throwError(`Server do not response. Error : ${error.toString()}`))
+        catchError((error) => throwError(error))
       );
   }
 

@@ -1,25 +1,4 @@
-<!-- Боковое меню -->
-<aside class="nav-sidebar">
-  <div class="nav-logo-section">
-    <img src="/icontodo.png" alt="Logo" class="nav-logo">
-    <h2 class="nav-brand-name">NexaVerse</h2>
-  </div>
-  <nav class="nav-menu">
-    <ul>
-      <li><a href="#"><i class="fa fa-th-large"></i> Overview</a></li>
-      <li><a href="#"><i class="fa fa-exchange-alt"></i> Transactions</a></li>
-      <li><a href="#"><i class="fa fa-users"></i> Customers</a></li>
-      <li><a href="#"><i class="fa fa-chart-bar"></i> Reports</a></li>
-      <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-      <li><a href="#"><i class="fa fa-code"></i> Developer</a></li>
-    </ul>
-  </nav>
-  <div class="nav-logout-section">
-    <a href="#"><i class="fa fa-sign-out-alt"></i> Log out</a>
-  </div>
-</aside>
-
-
+<div class="site-container">
 <div class="dashboard-header">
     <div class="name_app">
       <b>TODO List Demo App</b>
@@ -43,15 +22,18 @@
           </option>
         </select>
       </mat-form-field>
-    </div>
+      </div>
     </div>
   </ng-container>
 
-  
+
   <app-client-info [clients]="clients$"></app-client-info>
   <app-add-edit-client *ngIf="isFormOpened"></app-add-edit-client>
 
   <ng-container *ngIf="error$ | async as error">
-    {{ error }}
+    {{ error }} 
   </ng-container>
+ 
+  
+</div>
 </div>
