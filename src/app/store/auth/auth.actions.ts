@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { ActionTypes } from "../action-types";
-import { LoginInterface, RegisterInterface, SesionInterface } from "./auth.interface";
+import { LoginInterface, ProfileInterface, RegisterInterface, SesionInterface } from "./auth.interface";
 
 
 export const getLoginDataAction = createAction(
@@ -39,6 +39,20 @@ export const createLoginDataSuccesAction = createAction(
 
 export const createLoginDataFailureAction = createAction(
     ActionTypes.CREATE_LOGIN_DATA_FAILURE,
+    props<{ errors: string }>()
+)
+
+export const getMeInfoAction = createAction(
+    ActionTypes.GET_ME_INFO
+)
+
+export const getMeInfoSuccesAction = createAction(
+    ActionTypes.GET_ME_INFO_SUCCESS,
+    props<{ profile: ProfileInterface }>()
+)
+
+export const getMeInfoFailureAction = createAction(
+    ActionTypes.GET_ME_INFO_FAILURE,
     props<{ errors: string }>()
 )
 

@@ -14,3 +14,10 @@ export interface RegisterInterface {
 export interface SesionInterface {
     "token": string;
 }
+
+export interface ProfileInterface {
+    "username": string;
+    "email": string;
+    "firstname": string;
+    "lastname": string;
+}

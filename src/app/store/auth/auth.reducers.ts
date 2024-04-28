@@ -1,13 +1,14 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { AuthStateInterface } from "./authState.interface";
-import { createLoginDataAction, createLoginDataFailureAction, createLoginDataSuccesAction, createRegisterDataAction, createRegisterDataFailureAction, createRegisterDataSuccesAction, getLoginDataAction} from "./auth.actions";
+import { createLoginDataAction, createLoginDataFailureAction, createLoginDataSuccesAction, createRegisterDataAction, createRegisterDataFailureAction, createRegisterDataSuccesAction, getLoginDataAction, getMeInfoAction, getMeInfoFailureAction, getMeInfoSuccesAction} from "./auth.actions";
 
 const initialState: AuthStateInterface = {
     types: null,
     error: null,
     login: null,
     sesion: null,
-    register: null
+    register: null,
+    profile: null
 }
 
 const authReducer = createReducer(
@@ -29,6 +30,7 @@ const authReducer = createReducer(
         createLoginDataSuccesAction,
         (state, action): AuthStateInterface => {
             console.log(state, action, "succes action reducer")
+            localStorage.setItem("token", action.sesion.token)
             return {...state, sesion: action.sesion}
             
         }
@@ -55,6 +57,27 @@ const authReducer = createReducer(
     ),
     on(
         createRegisterDataFailureAction,
+        (state, action): AuthStateInterface => {
+            console.log(state, action, "failure action reducer")
+            return {...state, error: action.errors}
+        }
+    ),
+    on(
+        getMeInfoAction,
+        (state, action): AuthStateInterface => {
+            return {...state, ...action}
+        }
+    ),
+    on(
+        getMeInfoSuccesAction,
+        (state, action): AuthStateInterface => {
+            console.log(state, action, "succes action reducer")
+            return {...state, profile: action.profile}
+            
+        }
+    ),
+    on(
+        getMeInfoFailureAction,
         (state, action): AuthStateInterface => {
             console.log(state, action, "failure action reducer")
             return {...state, error: action.errors}

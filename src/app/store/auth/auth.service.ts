@@ -1,21 +1,40 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
-import { LoginInterface, RegisterInterface } from "./auth.interface";
-import { tap, catchError, delay} from 'rxjs/operators';
+import { LoginInterface, ProfileInterface, RegisterInterface } from "./auth.interface";
+import { tap, catchError, delay, take} from 'rxjs/operators';
+import { selectAuthToken } from "./auth.selector";
+import { select } from "@ngrx/store";
 
 @Injectable()
 export class AuthService {
+    store: any;
     // private url = '/login';
 
     constructor(private http: HttpClient) { }
 
-    // getClients(): Observable<ClientInterface[]> {
-    //     return this.http.get<ClientInterface[]>(this.url).pipe(
-    //         tap(_ => console.log('fetched clients')),
-    //         catchError((error) => throwError(`Server do not response. Error : ${error.toString()}`))
-    //     )
-    // }
+    getToken(): string {
+      // let token: string;
+      // this.store.pipe(select(selectAuthToken), take(1)).subscribe(value => token = value);
+      // return token;
+      return localStorage.getItem("token")
+  }
+
+    getProfile(): Observable<ProfileInterface> {
+      // Step 1
+    const httpHeaders: HttpHeaders = new HttpHeaders({
+    Authorization: 'Bearer '+ this.getToken()
+});
+        return this.http.get<ProfileInterface>("http://localhost:3000/api/me"
+        , {
+          headers: httpHeaders
+          
+       }
+       ).pipe(
+            tap(_ => console.log('fetched profile')),
+            catchError((error) => throwError(`Server do not response. Error : ${error.toString()}`))
+        )
+    }
 
     createLogin(newLogin: LoginInterface): Observable<any> {
         return this.http.post<LoginInterface>("http://localhost:3000/login", newLogin).pipe(

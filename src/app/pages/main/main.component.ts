@@ -27,6 +27,7 @@ import {
   MatProgressSpinnerModule,
 } from "@angular/material/progress-spinner";
 import { selectAuthError } from "src/app/store/auth/auth.selector";
+import { getMeInfoAction } from "src/app/store/auth/auth.actions";
 
 @Component({
   selector: "app-main",
@@ -59,6 +60,7 @@ export class MainComponent implements OnInit {
       }
     })
   );
+
   clients$ = combineLatest([
     this.selectedType$,
     this.store.select(allClientsSelector),
@@ -68,6 +70,7 @@ export class MainComponent implements OnInit {
     }),
     tap((r) => console.log(r))
   );
+
   error$ = this.store.select(ErrorSelector);
 
   isFormOpened$ = this.store.select(isFormOpenedSelecor);
@@ -89,6 +92,7 @@ export class MainComponent implements OnInit {
       // Ваши действия с данными
       this.isFormOpened = data;
     });
+    this.store.dispatch(getMeInfoAction());
   }
 
   ngOnDestroy(): void {

@@ -38,4 +38,8 @@ export enum ActionTypes {
     CREATE_REGISTER_DATA ='[AUTH] create data from register form',
     CREATE_REGISTER_DATA_SUCCESS = '[AUTH] create register data success',
     CREATE_REGISTER_DATA_FAILURE = '[AUTH] create register data failure',
+
+    GET_ME_INFO = '[AUTH] get user info',
+    GET_ME_INFO_SUCCESS = '[AUTH] get user info success',
+    GET_ME_INFO_FAILURE = '[AUTH] get user info failure'
 }

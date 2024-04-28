@@ -2,10 +2,11 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "./auth.service";
 import { catchError, map, switchMap, tap } from "rxjs/operators";
-import { LoginInterface, RegisterInterface, SesionInterface } from "./auth.interface";
+import { LoginInterface, ProfileInterface, RegisterInterface, SesionInterface } from "./auth.interface";
 import { HttpErrorResponse } from "@angular/common/http";
 import { of } from "rxjs";
-import { createLoginDataAction, createLoginDataFailureAction, createLoginDataSuccesAction, createRegisterDataAction, createRegisterDataFailureAction, createRegisterDataSuccesAction } from "./auth.actions";
+import { createLoginDataAction, createLoginDataFailureAction, createLoginDataSuccesAction, createRegisterDataAction, createRegisterDataFailureAction, createRegisterDataSuccesAction, getMeInfoAction, getMeInfoFailureAction, getMeInfoSuccesAction } from "./auth.actions";
+import { profile } from "console";
 
 @Injectable()
 export class CreateAuthEffect {
@@ -36,6 +37,21 @@ export class CreateAuthEffect {
         }),
         catchError((errorResponse: HttpErrorResponse) => {
             return of(createRegisterDataFailureAction({ errors: errorResponse.error}))
+        })
+    ));
+
+    getProfile$ = createEffect(() => this.actions$.pipe(
+        ofType(getMeInfoAction),
+        switchMap(_ => {
+            return this.authService.getProfile().pipe(
+                map((profile: ProfileInterface) => {
+                    console.log("no OKAs",profile)
+                    return getMeInfoSuccesAction({profile})
+                })
+            )
+        }),
+        catchError((errorResponse: HttpErrorResponse) => {
+            return of(getMeInfoFailureAction({ errors: errorResponse.error }))
         })
     ));
 
