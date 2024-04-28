@@ -30,3 +30,10 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+    display: flex;
+    flex-grow: 1;
+    margin-right: 0;
+    justify-content: center;
+}

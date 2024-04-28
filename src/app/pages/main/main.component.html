@@ -12,6 +12,7 @@
 
 <div class="container">
   <ng-container *ngIf="types$ | async as types">
+    <div class="filter-and-form">
     <div class="filter">
       <h4>Filter by Status:</h4>
       <div class="custom-select-wrapper">
@@ -24,11 +25,14 @@
       </mat-form-field>
       </div>
     </div>
+    <app-add-edit-client *ngIf="isFormOpened"></app-add-edit-client>
+    </div>
   </ng-container>
+  
 
-
-  <app-client-info [clients]="clients$"></app-client-info>
-  <app-add-edit-client *ngIf="isFormOpened"></app-add-edit-client>
+  
+  
+  
 
   <ng-container *ngIf="error$ | async as error">
     {{ error }} 
@@ -36,4 +40,5 @@
  
   
 </div>
+<app-client-info [clients]="clients$"></app-client-info>
 </div>

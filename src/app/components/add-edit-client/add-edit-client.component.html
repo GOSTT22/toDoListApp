@@ -1,7 +1,7 @@
 <ng-container>
-    <div *ngIf="isEditMode"> Edit Task</div>
-    <div *ngIf="!isEditMode"> Add NEW Task</div>
     <form class="example-form" [formGroup]="form" (ngSubmit)="submit()">
+        <div *ngIf="isEditMode"> Edit Task</div>
+    <div *ngIf="!isEditMode"> Add NEW Task</div>
         <mat-form-field class="example-full-width">
             <mat-label for="task_name">NAME:</mat-label>
             <input minlength="4" type="text" id="task_name" [formControl]="form.get('task_name')" matInput>

@@ -13,6 +13,23 @@ th.mat-header-cell, td.mat-cell{
     text-align: center;
     // padding-right: 40px;
 }
+// .text1{
+//   max-width: 250px; /* Максимальная ширина колонки описания */
+//   white-space: normal; /* Позволяет тексту переходить на новую строку */
+//   word-wrap: break-word; /* Переносит длинные слова на новую строку */
+// }
+
+.text1 {
+  display: flex;
+  justify-content: center;
+  max-width: 300px; /* Максимальная ширина колонки описания */
+  white-space: normal; /* Позволяет тексту переходить на новую строку */
+  word-wrap: break-word; /* Переносит длинные слова на новую строку */
+  overflow: hidden;
+  flex: 1;
+}
+
+
 
 .mat-mdc-form-field + .mat-mdc-form-field {
     margin-left: 8px;
@@ -21,6 +38,12 @@ th.mat-header-cell, td.mat-cell{
   .mat-expansion-panel:not([class*=mat-elevation-z]) {
     box-shadow: none;
 }
+mat-expansion-panel {
+  max-width: 300px; /* Или другое значение по вашему выбору */
+  // margin: 0 auto; /* Автоматические отступы слева и справа для центрирования панели */
+}
+
+
 
 .text2{
     display: flex;
@@ -56,13 +79,8 @@ th.mat-header-cell, td.mat-cell{
 }
 
 th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.mat-column-description {
-    // padding-left: 16px;
-    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .status {

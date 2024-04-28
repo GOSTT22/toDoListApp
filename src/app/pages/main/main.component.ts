@@ -85,8 +85,6 @@ export class MainComponent implements OnInit {
       this.store.dispatch(getTypesOfClients());
     }, 100);
 
-
-    this.isFormOpened$ = this.store.select(isFormOpenedSelecor);
     this.subscription = this.isFormOpened$.subscribe((data) => {
       // Ваши действия с данными
       this.isFormOpened = data;

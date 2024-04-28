@@ -11,3 +11,8 @@ export const selectAuthError = createSelector(
     authFeatureSelector,
     (authState: AuthStateInterface) => authState.error
 )
+
+export const selectAuthToken = createSelector(
+    authFeatureSelector,
+    (authState: AuthStateInterface) => authState.sesion?.token
+)

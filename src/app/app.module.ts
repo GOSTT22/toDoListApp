@@ -36,6 +36,7 @@ import { P404Component } from './page/p404/p404.component';
 import {  } from './page/p404/p404.component';
 import { CreateAuthEffect } from './store/auth/auth.effect';
 import { AuthService } from './store/auth/auth.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { AuthService } from './store/auth/auth.service';
   ],
   imports: [
     MatCardModule, MatRadioModule, FormsModule, MatSliderModule, MatProgressSpinnerModule,
-    MatCheckboxModule, 
+    MatCheckboxModule, MatTooltipModule, 
     MatToolbarModule, 
     MatTabsModule,
     MatExpansionModule,

@@ -7,11 +7,11 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Store, select } from "@ngrx/store";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable, Subscription } from "rxjs";
 import { tap } from "rxjs/operators";
 import { createLoginDataAction, createRegisterDataAction } from "src/app/store/auth/auth.actions";
 import { LoginInterface, RegisterInterface } from "src/app/store/auth/auth.interface";
-import { selectAuthError } from "src/app/store/auth/auth.selector";
+import { selectAuthError, selectAuthToken } from "src/app/store/auth/auth.selector";
 
 @Component({
   selector: "app-auth",
@@ -23,14 +23,11 @@ export class AuthComponent implements OnInit {
   error: string | null;
   error$: BehaviorSubject<string> = new BehaviorSubject("");
   selectedError$: Observable<string | null>;
+  selectedTabIndex: number = 0;
+  formRegister: FormGroup;
+  subscription: Subscription;
 
-  formRegister: FormGroup = new FormGroup({
-    username: new FormControl(""),
-    email: new FormControl(""),
-    firstname: new FormControl(""),
-    lastname: new FormControl(""),
-    password: new FormControl(""),
-  });
+  token$ = this.store.select(selectAuthToken);
 
   constructor(
     private fb: FormBuilder,
@@ -41,10 +38,30 @@ export class AuthComponent implements OnInit {
       username: ["", [Validators.required, Validators.minLength(4)]],
       password: ["", [Validators.required, Validators.minLength(8)]],
     });
+    this.formRegister = this.fb.group({
+      username: ["", [Validators.required, Validators.minLength(4)]],
+      email: ["", [Validators.required, Validators.minLength(14)]],
+      firstname: ["", [Validators.required, Validators.minLength(4)]],
+      lastname: ["", [Validators.required, Validators.minLength(4)]],
+      password: ["", [Validators.required, Validators.minLength(8)]],
+    });
+
+    this.subscription = this.token$.subscribe((data) => {
+      if (data !== null && data !== undefined) {
+        // Выполняем навигацию только если данные изменились
+        this.router.navigate(['/main']);
+      }
+    });
+    
     this.selectedError$ = this.store.select(selectAuthError);
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy() {
+    // Не забудьте отписаться от подписки при уничтожении компонента
+    this.subscription.unsubscribe();
   }
 
   submitLogin() {
@@ -56,10 +73,11 @@ export class AuthComponent implements OnInit {
     let obj: LoginInterface = {...this.formLogin.value}
     console.log("OGJECT", obj)
     this.store.dispatch(createLoginDataAction({ login: obj }));
-    
+    this.formLogin.reset()
   }
 
   submitRegister() {
+    this.error = null;
     if (!this.formRegister.valid) {
       return this.error="Fill out the form correctly"
     }
@@ -67,5 +85,7 @@ export class AuthComponent implements OnInit {
     let obj: RegisterInterface = {...this.formRegister.value}
     console.log("OGJECT", obj)
     this.store.dispatch(createRegisterDataAction({ register: obj }));
+    this.selectedTabIndex = 0;
+    this.formRegister.reset()
   }
 }

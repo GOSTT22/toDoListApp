@@ -13,7 +13,7 @@
     </td>
   </ng-container>
 
-  <ng-container matColumnDef="description">
+  <!-- <ng-container matColumnDef="description">
     <th mat-header-cell *matHeaderCellDef>Description</th>
     <td mat-cell *matCellDef="let element">
       <mat-accordion>
@@ -27,10 +27,27 @@
         </mat-expansion-panel>
       </mat-accordion>
     </td>
+  </ng-container> -->
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Short Description</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ element.description | slice:0:15 }}{{element.description.length > 15 ? '...' : ''}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p class="text1">{{ element.description }}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </td>
   </ng-container>
 
+  
   <ng-container matColumnDef="created">
-    <th mat-header-cell *matHeaderCellDef>Created</th>
+    <th mat-header-cell *matHeaderCellDef>Custom Date</th>
     <td mat-cell *matCellDef="let element">
       <div class="text1">
         {{ element.createdAt | date }}

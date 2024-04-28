@@ -20,9 +20,6 @@ export interface PeriodicElement {
   styleUrls: ['./client-info.component.scss']
 })
 
-
-
-
 export class ClientInfoComponent implements OnInit, AfterViewInit {
   @Input() clients: Observable<ClientInterface[]>;
   displayedColumns: string[] = ['_id', 'task_name', 'description', 'created', 'status', 'option_edit', 'option_delete' ];
@@ -38,8 +35,8 @@ export class ClientInfoComponent implements OnInit, AfterViewInit {
     this.subscription = this.clients.subscribe(allClients =>{
       this.dataSource = new MatTableDataSource(allClients);
     })
-  
   }
+
   
   ngAfterViewInit(): void {
     this.subscription = this.clients.subscribe(allClients =>{

@@ -55,9 +55,10 @@ const authReducer = createReducer(
     ),
     on(
         createRegisterDataFailureAction,
-        (state, action): AuthStateInterface => ({
-            ...state, error: action.errors
-        })
+        (state, action): AuthStateInterface => {
+            console.log(state, action, "failure action reducer")
+            return {...state, error: action.errors}
+        }
     )
 
 )
