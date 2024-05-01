@@ -26,7 +26,7 @@ import {
   ProgressSpinnerMode,
   MatProgressSpinnerModule,
 } from "@angular/material/progress-spinner";
-import { selectAuthError } from "src/app/store/auth/auth.selector";
+import { selectAuthError, selectProfile } from "src/app/store/auth/auth.selector";
 import { getMeInfoAction } from "src/app/store/auth/auth.actions";
 
 @Component({
@@ -39,6 +39,8 @@ export class MainComponent implements OnInit {
   @Input() clients: Observable<ClientInterface[]>;
   title = "app";
   subscription: Subscription;
+  subscriptionProfile: Subscription;
+  profile: any
 
   // Example
 
@@ -49,9 +51,6 @@ export class MainComponent implements OnInit {
     status: "Todo",
   };
   selectedType$: BehaviorSubject<string> = new BehaviorSubject("");
-
-  
-  
 
   types$ = this.store.select(allTypesSelector).pipe(
     tap((types) => {
@@ -75,6 +74,8 @@ export class MainComponent implements OnInit {
 
   isFormOpened$ = this.store.select(isFormOpenedSelecor);
 
+  profile$: Observable<any | null> = this.store.select(selectProfile)
+
   isFormOpened: boolean;
 
   constructor(private store: Store, private router: Router) {
@@ -92,8 +93,18 @@ export class MainComponent implements OnInit {
       // Ваши действия с данными
       this.isFormOpened = data;
     });
-    this.store.dispatch(getMeInfoAction());
+    // this.store.dispatch(getMeInfoAction())
+    setTimeout(() => {this.store.dispatch(getMeInfoAction());},2000)
+    this.store.pipe(select(selectProfile)).subscribe((profile) => {
+      // Обработка изменений профиля пользователя
+      this.profile = profile;
+      console.log('Profile changed:', profile);
+    });
+    const isToken: boolean = !!localStorage.getItem('token')
+    if (!isToken){this.router.navigate(['/auth'])}
   }
+
+
 
   ngOnDestroy(): void {
     // Отписываемся от потока данных при уничтожении компонента
@@ -122,5 +133,10 @@ export class MainComponent implements OnInit {
       status: "",
     };
     this.store.dispatch(setSelectedClientAction({ client: initialClient }));
+  }
+
+  logOutClient():void {
+    localStorage.clear()
+    location.reload()
   }
 }
