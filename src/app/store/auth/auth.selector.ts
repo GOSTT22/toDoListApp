@@ -16,3 +16,8 @@ export const selectAuthToken = createSelector(
     authFeatureSelector,
     (authState: AuthStateInterface) => authState.sesion?.token
 )
+
+export const selectProfile = createSelector(
+    authFeatureSelector,
+    (authState: AuthStateInterface) => authState.profile
+)

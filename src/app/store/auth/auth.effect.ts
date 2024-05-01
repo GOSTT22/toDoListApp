@@ -6,7 +6,7 @@ import { LoginInterface, ProfileInterface, RegisterInterface, SesionInterface } 
 import { HttpErrorResponse } from "@angular/common/http";
 import { of } from "rxjs";
 import { createLoginDataAction, createLoginDataFailureAction, createLoginDataSuccesAction, createRegisterDataAction, createRegisterDataFailureAction, createRegisterDataSuccesAction, getMeInfoAction, getMeInfoFailureAction, getMeInfoSuccesAction } from "./auth.actions";
-import { profile } from "console";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class CreateAuthEffect {
@@ -51,46 +51,12 @@ export class CreateAuthEffect {
             )
         }),
         catchError((errorResponse: HttpErrorResponse) => {
+            this.router.navigate(['/auth'])
             return of(getMeInfoFailureAction({ errors: errorResponse.error }))
         })
     ));
 
-    // deleteClient$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(deleteClientAction),
-    //         switchMap(({ _id }) => {
-    //             return this.clientsService.deleteClient(_id).pipe(
-    //                 map(() => {
-    //                     return deleteClientSuccessAction({ _id })
-    //                 })
-    //             )
-    //         }),
-    //         catchError((errorResponse: HttpErrorResponse) => {
-    //             return of(deleteClientFailureAction(
-    //                 { errors: errorResponse.error.errors }
-    //             ))
-    //         })
-    //     )
-    // );
 
-    // updateClient$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(updateClientAction),
-    //         switchMap(({ client }) => {
-    //             return this.clientsService.updateClient(client).pipe(
-    //                 map((client: ClientInterface) => {
-    //                     return updateClientSuccessAction({ client })
-    //                 })
-    //             )
-    //         }),
-    //         catchError((errorResponse: HttpErrorResponse) => {
-    //             return of(updateClientFailureAction(
-    //                 { errors: errorResponse.error.errors }
-    //             ))
-    //         })
-    //     )
-    // );
-
-    constructor(private authService: AuthService, private actions$: Actions) { }
+    constructor(private authService: AuthService, private actions$: Actions, private router: Router) { }
 
 }

@@ -7,9 +7,20 @@
       <button mat-stroked-button color="primary" (click)="createClient()">
         Add Task
       </button>
+      <button mat-stroked-button color="primary" (click)="logOutClient()">
+        EXIT
+      </button>
     </div>
 </div>
-
+<!-- {{profile | json}} -->
+<ng-container *ngIf="profile$ | async as profile">
+  Hello <b>{{profile.user.username}}</b>
+  <div class="info-profile">
+    Email: {{profile.user.email}}  
+    Name: {{profile.user.firstname}}  
+    Lastname: {{profile.user.lastname}}
+  </div>
+</ng-container>
 <div class="container">
   <ng-container *ngIf="types$ | async as types">
     <div class="filter-and-form">
