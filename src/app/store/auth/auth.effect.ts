@@ -17,13 +17,14 @@ export class CreateAuthEffect {
             return this.authService.createLogin(login).pipe(
                 map((sesion: SesionInterface) => {
                     return createLoginDataSuccesAction({ sesion })
+                }),
+                catchError((errorResponse: HttpErrorResponse) => {
+                    console.log(errorResponse.error, errorResponse.message,"ResponseError")
+                    return of(createLoginDataFailureAction({ errors: errorResponse.error}))
                 })
             )
         }),
-        catchError((errorResponse: HttpErrorResponse) => {
-            console.log(errorResponse.error, errorResponse.message,"ResponseError")
-            return of(createLoginDataFailureAction({ errors: errorResponse.error}))
-        })
+       
     ));
 
     createRegister$ = createEffect(() => this.actions$.pipe(
@@ -32,29 +33,32 @@ export class CreateAuthEffect {
             return this.authService.createRegister(register).pipe(
                 map((register: RegisterInterface) => {
                     return createRegisterDataSuccesAction({ register })
+                }),
+                catchError((errorResponse: HttpErrorResponse) => {
+                    return of(createRegisterDataFailureAction({ errors: errorResponse.error}))
                 })
             )
         }),
-        catchError((errorResponse: HttpErrorResponse) => {
-            return of(createRegisterDataFailureAction({ errors: errorResponse.error}))
-        })
+        
     ));
 
     getProfile$ = createEffect(() => this.actions$.pipe(
         ofType(getMeInfoAction),
         switchMap(_ => {
+            console.log("no OKAs")
             return this.authService.getProfile().pipe(
                 map((profile: ProfileInterface) => {
-                    console.log("no OKAs",profile)
-                    return getMeInfoSuccesAction({profile})
+                    return getMeInfoSuccesAction({ profile });
+                }),
+                catchError((errorResponse: HttpErrorResponse) => {
+                    console.log("error in effect");
+                    this.router.navigate(['/auth']);
+                    return of(getMeInfoFailureAction({ errors: errorResponse.error }));
                 })
             )
-        }),
-        catchError((errorResponse: HttpErrorResponse) => {
-            this.router.navigate(['/auth'])
-            return of(getMeInfoFailureAction({ errors: errorResponse.error }))
         })
     ));
+    
 
 
     constructor(private authService: AuthService, private actions$: Actions, private router: Router) { }

@@ -45,6 +45,7 @@ export class MainComponent implements OnInit {
   // Example
 
   client: ClientInterface = {
+    authorId: "0",
     _id: "11",
     task_name: "Buldog",
     description: "basketball team",
@@ -86,15 +87,16 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(getAllClientsAction());
     setTimeout(() => {
+
       this.store.dispatch(getTypesOfClients());
-    }, 100);
+
+    }, 300);
 
     this.subscription = this.isFormOpened$.subscribe((data) => {
       // Ваши действия с данными
       this.isFormOpened = data;
     });
-    // this.store.dispatch(getMeInfoAction())
-    setTimeout(() => {this.store.dispatch(getMeInfoAction());},2000)
+    this.store.dispatch(getMeInfoAction())
     this.store.pipe(select(selectProfile)).subscribe((profile) => {
       // Обработка изменений профиля пользователя
       this.profile = profile;
@@ -127,6 +129,7 @@ export class MainComponent implements OnInit {
     this.store.dispatch(addModeClientAction());
 
     const initialClient: ClientInterface = {
+      authorId: "0",
       _id: "0",
       task_name: "",
       description: "",

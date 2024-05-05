@@ -78,3 +78,27 @@ app-add-edit-client {
   /* другие стили */
   margin-bottom: 20px; /* Замените 20px на размер отступа, который вы хотите использовать */
 }
+.filter-profile {
+  margin-bottom: 1rem;
+}
+
+.info-profile{
+  margin-bottom: 1rem;
+}
+.info-profile{
+  display: flex;
+  flex-direction: column;
+  background-color: #8EB8E5; /* Синий фон */
+  color: black; /* Белый текст */
+  padding: 10px 20px;
+  border-radius: 8px; /* Скругленные углы */
+  margin-bottom: 1rem; /* Отступ от следующего элемента на странице */
+  width: 300px; /* Если вы хотите, чтобы фильтр занимал половину ширины таблицы */
+  font-size: 1rem; /* Размер шрифта */
+  margin: 0; /* Убираем внешние отступы */
+}
+
+.info-profile mat-label {
+  display: block; /* Сделать каждый label блочным элементом */
+  margin-bottom: 5px; /* Добавить отступ снизу */
+}

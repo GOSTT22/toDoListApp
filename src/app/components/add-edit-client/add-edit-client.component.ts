@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 import { tap } from "rxjs/operators";
 import { Router } from "@angular/router";
-import { Subscription } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import {
   clearSelectedClientAction,
   closeTaskFormClientAction,
@@ -15,6 +15,7 @@ import {
 } from "../../store/task/client.actions";
 import { isEditModeSelecor, selectSelectedClientSelector } from "../../store/task/client.selector";
 import { ClientInterface } from "../../store/task/client.interface";
+import { selectProfile } from "src/app/store/auth/auth.selector";
 
 @Component({
   selector: "app-add-edit-client",
@@ -28,6 +29,8 @@ export class AddEditClientComponent implements OnInit {
   isInputDisabled = false;
   create = false;
   client: ClientInterface;
+  profile$: Observable<any | null> = this.store.select(selectProfile)
+  profile: any
 
   client$ = this.store.select(selectSelectedClientSelector).pipe(
     tap((client) => {
@@ -68,6 +71,11 @@ export class AddEditClientComponent implements OnInit {
       // Ваши действия с данными
       this.isEditMode = data;
     });
+    this.store.pipe(select(selectProfile)).subscribe((profile) => {
+      // Обработка изменений профиля пользователя
+      this.profile = profile;
+      console.log('Profile changed:', profile);
+    });
   }
 
   submit(): void {
@@ -78,22 +86,23 @@ export class AddEditClientComponent implements OnInit {
 
     let obj: ClientInterface = {...this.form.value}
     obj._id= this.client._id
+    obj.authorId=this.profile.user._id
     console.log("OGJECT", obj)
-    // if (this._id !== newId) {
-    //   obj._id = this._id;
-    //   window.alert("You can't change ID.");
-    // }
     console.log("error",this.isEditMode )
     this.isEditMode ? this.store.dispatch(updateClientAction({ client: obj })) : this.store.dispatch(createClientAction({ client: obj }));
-    this.store.dispatch(clearSelectedClientAction());
-    this.store.dispatch(getAllClientsAction());
+    setTimeout(() =>{
+      this.store.dispatch(clearSelectedClientAction());
+      this.store.dispatch(getAllClientsAction());
+      this.form.reset();
+    },100)
     setTimeout(() => {
       this.store.dispatch(getTypesOfClients());
-    }, 100);
+    }, 300);
   }
 
   cancel() {
     const initialClient: ClientInterface = {
+      authorId: "0",
       _id: "0",
       task_name: "",
       description: "",

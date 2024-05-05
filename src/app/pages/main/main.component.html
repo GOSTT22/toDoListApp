@@ -1,55 +1,64 @@
 <div class="site-container">
-<div class="dashboard-header">
+  <div class="dashboard-header">
     <div class="name_app">
-      <b>TODO List Demo App</b>
+      <b>To-Do List Demo App</b>
     </div>
     <div class="main">
       <button mat-stroked-button color="primary" (click)="createClient()">
         Add Task
       </button>
-      <button mat-stroked-button color="primary" (click)="logOutClient()">
-        EXIT
-      </button>
     </div>
-</div>
-<!-- {{profile | json}} -->
-<ng-container *ngIf="profile$ | async as profile">
-  Hello <b>{{profile.user.username}}</b>
-  <div class="info-profile">
-    Email: {{profile.user.email}}  
-    Name: {{profile.user.firstname}}  
-    Lastname: {{profile.user.lastname}}
   </div>
-</ng-container>
-<div class="container">
-  <ng-container *ngIf="types$ | async as types">
-    <div class="filter-and-form">
-    <div class="filter">
-      <h4>Filter by Status:</h4>
-      <div class="custom-select-wrapper">
-      <mat-form-field>
-        <select class="custom-select" matNativeControl (change)="selectedValue($event.target.value)">
-          <option *ngFor="let type of types" [value]="type">
-            {{ type }}
-          </option>
-        </select>
-      </mat-form-field>
+  
+  <div class="container">
+    <ng-container *ngIf="types$ | async as types">
+      <div class="filter-and-form">
+        <div class="filter-profile">
+        <div class="filter">
+          <h4>Filter by Status:</h4>
+          <div class="custom-select-wrapper">
+            <mat-form-field>
+              <select
+                class="custom-select"
+                matNativeControl
+                (change)="selectedValue($event.target.value)"
+              >
+                <option *ngFor="let type of types" [value]="type">
+                  {{ type }}
+                </option>
+              </select>
+            </mat-form-field>
+          </div>
+        </div>
+        <ng-container *ngIf="profile$ | async as profile">
+          <div class="info-profile">
+            <mat-label for="description">
+              Hello <b>{{ profile.user.username }}</b></mat-label
+            >
+            <mat-label for="description">Email: {{ profile.user.email }}</mat-label>
+            <mat-label for="description"
+              >Name: {{ profile.user.firstname }}
+            </mat-label>
+            <mat-label for="description">
+              Lastname: {{ profile.user.lastname }}</mat-label
+            >
+            <button mat-stroked-button color="primary" (click)="logOutClient()">
+              EXIT
+            </button>
+          </div>
+        </ng-container>
       </div>
-    </div>
-    <app-add-edit-client *ngIf="isFormOpened"></app-add-edit-client>
-    </div>
-  </ng-container>
-  
+        <app-add-edit-client *ngIf="isFormOpened"></app-add-edit-client>
+      </div>
+      
+    </ng-container>
 
+    <ng-container *ngIf="error$ | async as error">
+      {{ error }}
+    </ng-container>
+  </div>
   
-  
-  
+  <app-client-info [clients]="clients$"></app-client-info>
+</div>
 
-  <ng-container *ngIf="error$ | async as error">
-    {{ error }} 
-  </ng-container>
- 
-  
-</div>
-<app-client-info [clients]="clients$"></app-client-info>
-</div>
+

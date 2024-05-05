@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
 import { ClientInterface } from "./client.interface";
 import { tap, catchError, delay} from 'rxjs/operators';
@@ -9,9 +9,18 @@ export class ClientsService {
     private url = '/api/clients';
 
     constructor(private http: HttpClient) { }
+    getToken(): string {
+        return localStorage.getItem("token");
+      }
 
     getClients(): Observable<ClientInterface[]> {
-        return this.http.get<ClientInterface[]>(this.url).pipe(
+        const httpHeaders: HttpHeaders = new HttpHeaders({
+            Authorization: "Bearer " + this.getToken(),
+          });
+        return this.http.get<ClientInterface[]>(this.url,
+            {
+              headers: httpHeaders,
+            }).pipe(
             tap(_ => console.log('fetched clients')),
             catchError((error) => throwError(`Server do not response. Error : ${error.toString()}`))
         )

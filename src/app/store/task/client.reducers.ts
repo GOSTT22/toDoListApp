@@ -7,7 +7,7 @@ const initialState: ClientStateInterface = {
     types: null,
     error: null,
     client: null,
-    selectedClient: {_id: "0", task_name: "", description: "", status: "", i: 0, createdAt:""},
+    selectedClient: {authorId: "0", _id: "0", task_name: "", description: "", status: "", i: 0, createdAt:""},
     isFormOpened: false,
     isEditMode: false
 }
