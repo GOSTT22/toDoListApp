@@ -14,6 +14,25 @@
     <ng-container *ngIf="types$ | async as types">
       <div class="filter-and-form">
         <div class="filter-profile">
+
+          <ng-container *ngIf="profile$ | async as profile">
+            <div class="info-profile">
+              <mat-label for="description">
+                Hello <b>{{ profile.user.username }}</b></mat-label
+              >
+              <mat-label for="description">Email: {{ profile.user.email }}</mat-label>
+              <mat-label for="description"
+                >Name: {{ profile.user.firstname }}
+              </mat-label>
+              <mat-label for="description">
+                Lastname: {{ profile.user.lastname }}</mat-label
+              >
+              <button mat-stroked-button color="primary" (click)="logOutClient()">
+                EXIT
+              </button>
+            </div>
+          </ng-container>
+
         <div class="filter">
           <h4>Filter by Status:</h4>
           <div class="custom-select-wrapper">
@@ -30,23 +49,8 @@
             </mat-form-field>
           </div>
         </div>
-        <ng-container *ngIf="profile$ | async as profile">
-          <div class="info-profile">
-            <mat-label for="description">
-              Hello <b>{{ profile.user.username }}</b></mat-label
-            >
-            <mat-label for="description">Email: {{ profile.user.email }}</mat-label>
-            <mat-label for="description"
-              >Name: {{ profile.user.firstname }}
-            </mat-label>
-            <mat-label for="description">
-              Lastname: {{ profile.user.lastname }}</mat-label
-            >
-            <button mat-stroked-button color="primary" (click)="logOutClient()">
-              EXIT
-            </button>
-          </div>
-        </ng-container>
+
+        
       </div>
         <app-add-edit-client *ngIf="isFormOpened"></app-add-edit-client>
       </div>

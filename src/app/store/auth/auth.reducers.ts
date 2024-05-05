@@ -51,6 +51,7 @@ const authReducer = createReducer(
         createRegisterDataSuccesAction,
         (state, action): AuthStateInterface => {
             console.log(state, action, "succes action reducer")
+            location.reload()
             return {...state, register: action.register}
             
         }

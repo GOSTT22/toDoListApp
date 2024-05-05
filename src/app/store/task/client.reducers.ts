@@ -17,7 +17,7 @@ const clientReducer = createReducer(
     on(
         getAllClientsSuccessAction,
         (state, action): ClientStateInterface => ({
-            ...state, allClients: action.clients
+            ...state, allClients: action.clients, error: null
         })
     ),
     on(
